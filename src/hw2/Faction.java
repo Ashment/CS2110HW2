@@ -1,5 +1,7 @@
 package hw2;
 
+import hw2.resources.*;
+
 public class Faction {
 
 	public int capital;

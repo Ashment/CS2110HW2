@@ -9,8 +9,14 @@ public class Resource {
 	public void SetDemand(int d){
 		demand = d;
 	}
+	public int GetDemand(){
+		return demand;
+	}
 	public void SetSupply(int s){
 		supply = s;
+	}
+	public int GetSupply(){
+		return supply;
 	}
 	public void setPrice(int p){
 		value = p;

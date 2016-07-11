@@ -2,18 +2,19 @@ package hw2;
 
 import hw2.resources.*;
 
-public class Faction {
-
+public class Faction implements Trader{
 	public int capital;
 	public String name;
 	public String specialty;
 	
+	public Main main;
+	
 	Resource biofuel, alloy, stim, special;
 	
 	public int biofuelProductionPower, alloyProductionPower, stimProductionPower, specialProductionPower;
-	public int cBiofuelConsumption, cAlloyConsumption, cStimConsumption;
+	public int cBiofuelDemand, cAlloyDemand, cStimDemand;
 	
-	public Faction(String n, int production, String specialR) {
+	public Faction(String n, int production, String specialR, Main m) {
 		name = n;
 		//create faction-specific resource data when faction is created
 		biofuel = new Biofuel();
@@ -56,5 +57,25 @@ public class Faction {
 		String s = "Factions: " + name + "\n"
 				+ "Producing " + specialty + " at: " + specialProductionPower + "/cycle \n";
 		return s;
+	}
+	
+	public int getSupplyOf(String r){
+		int x = 0;
+		switch(r){
+			case "Alloy":
+				x = alloy.GetSupply();
+				break;
+			case "Biofuel":
+				x = biofuel.GetSupply();
+				break;
+			case "Stim":
+				x = stim.GetSupply();
+				break;
+			default:
+				x = 0;
+				break;
+		}
+		
+		return x;
 	}
 }

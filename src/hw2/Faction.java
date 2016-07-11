@@ -8,9 +8,10 @@ public class Faction {
 	public String name;
 	public String specialty;
 	
-	Resource biofuel, alloy, stim;
+	Resource biofuel, alloy, stim, special;
 	
 	public int biofuelProductionPower, alloyProductionPower, stimProductionPower, specialProductionPower;
+	public int cBiofuelConsumption, cAlloyConsumption, cStimConsumption;
 	
 	public Faction(String n, int production, String specialR) {
 		name = n;
@@ -26,6 +27,7 @@ public class Faction {
 				alloy.SetDemand(0);
 				alloyProductionPower = production;
 				specialProductionPower = alloyProductionPower;
+				special = alloy;
 				biofuelProductionPower = 0;
 				stimProductionPower = 0;
 				break;
@@ -33,6 +35,7 @@ public class Faction {
 				biofuel.SetDemand(0);
 				biofuelProductionPower = production;
 				specialProductionPower = biofuelProductionPower;
+				special = biofuel;
 				stimProductionPower = 0;
 				alloyProductionPower = 0;
 				break;
@@ -40,6 +43,7 @@ public class Faction {
 				stim.SetDemand(0);
 				stimProductionPower = production;
 				specialProductionPower = stimProductionPower;
+				special = stim;
 				alloyProductionPower = 0;
 				biofuelProductionPower = 0;
 				break;

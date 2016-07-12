@@ -90,10 +90,4 @@ public class WorldMarket {
 		cycleString += buyer.toString() + " has purchased " + buyer.getDemandOf(tradedResource) + " units of " + tradedResource + " from " + seller.toString() + " for " + totalPrice + " Capital. \n";                             
 		
 	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

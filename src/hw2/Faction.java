@@ -16,12 +16,14 @@ public class Faction implements Trader{
 	
 	public Faction(String n, int production, int productDeviation, String specialR, Main m) {
 		capital = 8000;
+		main = m;
 		name = n;
 		//create faction-specific resource data when faction is created
 		biofuel = new Biofuel();
 		alloy = new Alloy();
 		stim = new Stim();
 		specialty = specialR;
+		specialProductionPower = 0;
 		
 		productionDeviation = productDeviation;
 		//Factions produce only its special resource
@@ -55,6 +57,8 @@ public class Faction implements Trader{
 		}
 	}
 	
+	
+	//Debugging
 	public String toString(){
 		String s = "Factions: " + name + "\n"
 				+ "Producing " + specialty + " at: " + specialProductionPower + "/cycle \n";
@@ -84,13 +88,18 @@ public class Faction implements Trader{
 	}
 	
 	public void ProduceResources(){
+		System.out.println(name + " Producing Resources");
+		
 		int minProduction = specialProductionPower - (productionDeviation * (2/3));
 		int maxProduction = specialProductionPower + (productionDeviation);
 		int cycleProduction = main.NumberRandom(minProduction, maxProduction);
 		special.SetSupply((special.GetSupply()) + cycleProduction);
+		
+		System.out.println(name + " Done Producing Resources");
 	}
 	
 	public void DetermineCycleConsumption(){
+		System.out.println(name + "Determining Consumption");
 		//Determine the amount of each resources to consume in this cycle
 		int i = 0; //desired consumption of resource
 		

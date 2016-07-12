@@ -33,7 +33,7 @@ public class MainUI extends JFrame implements ActionListener{
 		outputArea.setEditable(false);
 		JScrollPane scrConsole = new JScrollPane(outputArea);
 		scrConsole.setBackground(Color.WHITE);
-		scrConsole.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		//scrConsole.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 		
 		//Initialize Cycle Button
 		cycleButton = new JButton("-Start New Cycle-");

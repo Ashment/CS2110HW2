@@ -4,11 +4,10 @@ import javax.swing.JFrame;
 
 public class Main {
 	static Main main;
-	public static Faction protoss, zerg, terran;
-	public static WorldMarket market;
-	public static JFrame frame;
-	public static MainUI ui;
-	Faction[] factions;
+	public Faction protoss, zerg, terran;
+	public WorldMarket market;
+	public JFrame frame;
+	public MainUI ui;
 	
 	public int cycleCount;
 	
@@ -20,10 +19,6 @@ public class Main {
 		protoss = new Faction("Protoss", 100, 8, "Alloy", this);
 		zerg = new Faction("Zerg", 80, 12, "Biofuel", this);
 		terran = new Faction("Terran", 60, 4, "Stim", this);
-		factions = new Faction[3];
-		factions[0] = protoss;
-		factions[1] = zerg;
-		factions[2] = terran;
 		
 		//debug print for faction initialization
 		System.out.println(protoss.toString());
@@ -32,6 +27,7 @@ public class Main {
 		
 		//Initialize World Market
 		market = new WorldMarket(this);
+		System.out.println(market.main.cycleCount);
 		cycleCount = 0;
 		
 		//Initialize UI
@@ -46,7 +42,7 @@ public class Main {
 	
 	public void StartNewCycle(){
 		cycleCount++;
-		ui.AddMessage("\nSimulating Market Cycle: " + cycleCount);
+		ui.AddMessage("\nSimulating Market Cycle: " + cycleCount + "\n----------\n");
 		market.NewCycle();
 	}
 	

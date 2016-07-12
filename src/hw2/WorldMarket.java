@@ -27,6 +27,7 @@ public class WorldMarket {
 	}
 	
 	public void NewCycle(){
+		System.out.println("Start Cycle");
 		//Initialize Cycle
 		main.zerg.ProduceResources();
 		main.zerg.DetermineCycleConsumption();
@@ -36,6 +37,7 @@ public class WorldMarket {
 		main.terran.DetermineCycleConsumption();
 		
 		//Transactions
+		System.out.println("Start Transactions");
 		ResourceTransaction(PTrader, ZTrader, "Biofuel");
 		ResourceTransaction(PTrader, TTrader, "Stim");
 		ResourceTransaction(ZTrader, PTrader, "Alloy");
@@ -45,6 +47,7 @@ public class WorldMarket {
 		System.out.println("Transactions Complete.");
 		
 		//Finalize
+		System.out.println("Finalize Cycle");
 		cycleString += "\n Zerg capital: " + main.zerg.capital;
 		cycleString += "\n Protoss capital: " + main.protoss.capital;
 		cycleString += "\n Terran capital: " + main.terran.capital;

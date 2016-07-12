@@ -152,8 +152,9 @@ public class Faction implements Trader{
 		
 		return x;
 	}
+	
 	public void changeSupplyOf(String r, int c){		
-		//change the supply of r by c
+		//change the supply by c
 		switch(r){
 			case "Alloy":
 				alloy.SetSupply(alloy.GetSupply() + c);
@@ -167,5 +168,9 @@ public class Faction implements Trader{
 			default:
 				break;
 		}
+	}
+	
+	public void changeCapital(int c){
+		capital += c;
 	}
 }

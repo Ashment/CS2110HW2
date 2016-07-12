@@ -175,6 +175,7 @@ public class Faction implements Trader{
 	}
 	
 	public void setDemand(String r, int n){
+		//Set demand of Resource r to n
 		switch(r){
 			case "Alloy":
 				alloy.SetDemand(n);

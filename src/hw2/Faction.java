@@ -176,17 +176,17 @@ public class Faction implements Trader{
 	
 	public void setDemand(String r, int n){
 		switch(r){
-		case "Alloy":
-			alloy.SetDemand(n);
-			break;
-		case "Biofuel":
-			biofuel.SetDemand(n);
-			break;
-		case "Stim":
-			stim.SetDemand(n);
-			break;
-		default:
-			break;
-	}
+			case "Alloy":
+				alloy.SetDemand(n);
+				break;
+			case "Biofuel":
+				biofuel.SetDemand(n);
+				break;
+			case "Stim":
+				stim.SetDemand(n);
+				break;
+			default:
+				break;
+		}
 	}
 }

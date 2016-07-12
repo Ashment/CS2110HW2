@@ -1,9 +1,14 @@
 package hw2;
 
+import javax.swing.JFrame;
+
 public class Main {
 	static Main main;
 	public static Faction protoss, zerg, terran;
+	public static WorldMarket market;
 	Faction[] factions;
+	
+	public int cycleCount;
 	
 	public static void main(String[] args){
 		main = new Main();
@@ -24,6 +29,16 @@ public class Main {
 		System.out.println(terran.toString());
 		
 		//Initialize World Market
+		market = new WorldMarket(this);
+		cycleCount = 0;
+		
+		//Initialize UI
+		JFrame frame = new MainUI("Economy Simulation");
+		frame.setSize(500, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		frame.setVisible(true);
 	}
 	public int NumberRandom(int min, int max){
 		int range = (max - min) + 1;     

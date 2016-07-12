@@ -15,7 +15,7 @@ public class Faction implements Trader{
 	//public int cBiofuelDemand, cAlloyDemand, cStimDemand;
 	
 	public Faction(String n, int production, int productDeviation, String specialR, Main m) {
-		capital = 2500;
+		capital = 8000;
 		name = n;
 		//create faction-specific resource data when faction is created
 		biofuel = new Biofuel();

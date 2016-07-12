@@ -84,7 +84,10 @@ public class Faction implements Trader{
 	}
 	
 	public void ProduceResources(){
-		
+		int minProduction = specialProductionPower - (productionDeviation * (2/3));
+		int maxProduction = specialProductionPower + (productionDeviation);
+		int cycleProduction = main.NumberRandom(minProduction, maxProduction);
+		special.SetSupply((special.GetSupply()) + cycleProduction);
 	}
 	
 	public void DetermineCycleConsumption(){
@@ -148,5 +151,21 @@ public class Faction implements Trader{
 		}
 		
 		return x;
+	}
+	public void changeSupplyOf(String r, int c){		
+		//change the supply of r by c
+		switch(r){
+			case "Alloy":
+				alloy.SetSupply(alloy.GetSupply() + c);
+				break;
+			case "Biofuel":
+				biofuel.SetSupply(biofuel.GetSupply() + c);
+				break;
+			case "Stim":
+				stim.SetSupply(stim.GetSupply() + c);
+				break;
+			default:
+				break;
+		}
 	}
 }

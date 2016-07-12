@@ -12,7 +12,7 @@ public class Main {
 		//Initialize Factions and set references
 		protoss = new Faction("Protoss", 100, 8, "Alloy", this);
 		zerg = new Faction("Zerg", 80, 12, "Biofuel", this);
-		terran = new Faction("Terran", 60, 6, "Stim", this);
+		terran = new Faction("Terran", 60, 4, "Stim", this);
 		factions = new Faction[3];
 		factions[0] = protoss;
 		factions[1] = zerg;

@@ -6,6 +6,7 @@ public class Main {
 	static Main main;
 	public static Faction protoss, zerg, terran;
 	public static WorldMarket market;
+	public static JFrame frame;
 	Faction[] factions;
 	
 	public int cycleCount;
@@ -33,13 +34,18 @@ public class Main {
 		cycleCount = 0;
 		
 		//Initialize UI
-		JFrame frame = new MainUI("Economy Simulation");
+		frame = new MainUI("Economy Simulation", this);
 		frame.setSize(500, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}
+	
+	public void StartNewCycle(){
+		
+	}
+	
 	public int NumberRandom(int min, int max){
 		int range = (max - min) + 1;     
 		return (int)(Math.random() * range) + min;

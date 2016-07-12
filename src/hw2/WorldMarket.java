@@ -8,6 +8,8 @@ public class WorldMarket {
 	Trader PTrader, ZTrader, TTrader;
 	Main main;
 	
+	String cycleString = new String();
+	
 	public WorldMarket(Main m){
 		main = m;
 		
@@ -43,13 +45,21 @@ public class WorldMarket {
 		System.out.println("Transactions Complete.");
 		
 		//Finalize
+		cycleString += "\n Zerg capital: " + main.zerg.capital;
+		cycleString += "\n Protoss capital: " + main.protoss.capital;
+		cycleString += "\n Terran capital: " + main.terran.capital;
+		cycleString += "\n \n Cycle Completed. \n";
+		
+		main.ui.AddMessage(cycleString);
+		cycleString = new String();
 	}
 	
 	public void ResourceTransaction(Trader buyer, Trader seller, String tradedResource){
-		int buyerDemand;
+		int totalPrice;
 		
 		if(buyer.getDemandOf(tradedResource) > seller.getSupplyOf(tradedResource)){
 			buyer.setDemand(tradedResource, seller.getSupplyOf(tradedResource));
+			cycleString += buyer.toString() + " Demand adjusted. \n \n";
 		}
 		
 		//Resource Transaction
@@ -60,15 +70,22 @@ public class WorldMarket {
 		if(tradedResource == "Biofuel"){
 			seller.changeCapital(worldBiofuel.getPrice() * buyer.getDemandOf(tradedResource));
 			buyer.changeCapital(-worldBiofuel.getPrice() * buyer.getDemandOf(tradedResource));
+			totalPrice = worldBiofuel.getPrice() * buyer.getDemandOf(tradedResource);
 		}else if(tradedResource == "Alloy"){
 			seller.changeCapital(worldAlloy.getPrice() * buyer.getDemandOf(tradedResource));
 			buyer.changeCapital(-worldAlloy.getPrice() * buyer.getDemandOf(tradedResource));
+			totalPrice = worldAlloy.getPrice() * buyer.getDemandOf(tradedResource);
 		}else if(tradedResource == "Stim"){
 			seller.changeCapital(worldStim.getPrice() * buyer.getDemandOf(tradedResource));
 			buyer.changeCapital(-worldStim.getPrice() * buyer.getDemandOf(tradedResource));
+			totalPrice = worldStim.getPrice() * buyer.getDemandOf(tradedResource);
 		}else{
 			System.out.println("Invalid traded resource");
+			return;
 		}
+		
+		cycleString += buyer.toString() + " has purchsed" + buyer.getDemandOf(tradedResource) + " units of " + tradedResource + " from " + buyer.toString() + " for " + totalPrice + " Capital. \n";                             
+		
 	}
 	
 	public static void main(String[] args) {

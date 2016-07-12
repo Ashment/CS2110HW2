@@ -87,7 +87,7 @@ public class WorldMarket {
 			return;
 		}
 		
-		cycleString += buyer.toString() + " has purchsed" + buyer.getDemandOf(tradedResource) + " units of " + tradedResource + " from " + buyer.toString() + " for " + totalPrice + " Capital. \n";                             
+		cycleString += buyer.toString() + " has purchsed" + buyer.getDemandOf(tradedResource) + " units of " + tradedResource + " from " + seller.toString() + " for " + totalPrice + " Capital. \n";                             
 		
 	}
 	

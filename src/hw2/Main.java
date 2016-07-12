@@ -16,9 +16,9 @@ public class Main {
 	}
 	public Main(){
 		//Initialize Factions and set references
-		protoss = new Faction("Protoss", 80, 10, "Alloy", this);
-		zerg = new Faction("Zerg", 80, 10, "Biofuel", this);
-		terran = new Faction("Terran", 70, 6, "Stim", this);
+		protoss = new Faction("Protoss", 110, 12, "Alloy", this);
+		zerg = new Faction("Zerg", 75, 9, "Biofuel", this);
+		terran = new Faction("Terran", 50, 8, "Stim", this);
 		
 		//debug print for faction initialization
 		System.out.println(protoss.toString());

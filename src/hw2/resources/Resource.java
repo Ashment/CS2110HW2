@@ -3,7 +3,7 @@ package hw2.resources;
 public class Resource {
 	int supply, demand;
 	static int worldSupply, worldDemand;
-	private static int value;
+	private int value;
 	public static String name;
 	
 	public void SetDemand(int d){

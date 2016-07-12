@@ -15,7 +15,7 @@ public class Faction implements Trader{
 	//public int cBiofuelDemand, cAlloyDemand, cStimDemand;
 	
 	public Faction(String n, int production, int productDeviation, String specialR, Main m) {
-		capital = 8000;
+		capital = 20000;
 		main = m;
 		name = n;
 		//create faction-specific resource data when faction is created
@@ -104,11 +104,11 @@ public class Faction implements Trader{
 		//Alloy consumption/demand
 		if(special != alloy){
 			//set cAlloyDemand
-			i = main.NumberRandom(22, 30); //max consumption 117
+			i = main.NumberRandom(34, 40);
 			alloy.SetDemand(i);
 		}else{
 			int supply = special.GetSupply();
-			i = main.NumberRandom(22, 30); //max consumption 117
+			i = main.NumberRandom(34, 40);
 			supply -= i;
 			special.SetSupply(supply);
 		}
@@ -116,11 +116,11 @@ public class Faction implements Trader{
 		//Biofuel consumption/demand
 		if(special != biofuel){
 			//set cBiofuelDemand
-			i = main.NumberRandom(21, 31); //max consumption 93
+			i = main.NumberRandom(24, 31);
 			biofuel.SetDemand(i);
 		}else{
 			int supply = special.GetSupply();
-			i = main.NumberRandom(21, 31); //max consumption 93
+			i = main.NumberRandom(20, 27);
 			supply -= i;
 			special.SetSupply(supply);
 		}
@@ -128,11 +128,11 @@ public class Faction implements Trader{
 		//stim consumption/demand
 		if(special != stim){
 			//set cStimDemand
-			i = main.NumberRandom(20, 26); //max consumption 75
+			i = main.NumberRandom(20, 26);
 			stim.SetDemand(i);
 		}else{
 			int supply = special.GetSupply();
-			i = main.NumberRandom(20, 26); //max consumption 75
+			i = main.NumberRandom(19, 26);
 			supply -= i;
 			special.SetSupply(supply);
 		}

@@ -21,7 +21,7 @@ public class WorldMarket {
 		worldAlloy.setPrice(basePrcA);
 		worldStim.setPrice(basePrcS);
 		
-		PTrader = main.terran;
+		PTrader = main.protoss;
 		ZTrader = main.zerg;
 		TTrader = main.terran;
 	}

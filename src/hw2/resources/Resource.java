@@ -21,4 +21,7 @@ public class Resource {
 	public void setPrice(int p){
 		value = p;
 	}
+	public int getPrice(){
+		return value;
+	}
 }

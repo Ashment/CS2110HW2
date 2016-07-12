@@ -104,11 +104,11 @@ public class Faction implements Trader{
 		//Alloy consumption/demand
 		if(special != alloy){
 			//set cAlloyDemand
-			i = main.NumberRandom(27, 39); //max consumption 117
+			i = main.NumberRandom(22, 30); //max consumption 117
 			alloy.SetDemand(i);
 		}else{
 			int supply = special.GetSupply();
-			i = main.NumberRandom(27, 39); //max consumption 117
+			i = main.NumberRandom(22, 30); //max consumption 117
 			supply -= i;
 			special.SetSupply(supply);
 		}
@@ -128,11 +128,11 @@ public class Faction implements Trader{
 		//stim consumption/demand
 		if(special != stim){
 			//set cStimDemand
-			i = main.NumberRandom(16, 25); //max consumption 75
+			i = main.NumberRandom(20, 26); //max consumption 75
 			stim.SetDemand(i);
 		}else{
 			int supply = special.GetSupply();
-			i = main.NumberRandom(16, 25); //max consumption 75
+			i = main.NumberRandom(20, 26); //max consumption 75
 			supply -= i;
 			special.SetSupply(supply);
 		}

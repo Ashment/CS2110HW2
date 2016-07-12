@@ -4,7 +4,7 @@ import hw2.resources.*;
 public class WorldMarket {
 	
 	Resource worldBiofuel, worldAlloy, worldStim;
-	int basePrcB = 60, basePrcA = 50, basePrcS = 100;
+	int basePrcB = 60, basePrcA = 40, basePrcS = 110;
 	Trader PTrader, ZTrader, TTrader;
 	Main main;
 	

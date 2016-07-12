@@ -28,7 +28,7 @@ public class MainUI extends JFrame implements ActionListener{
 		setBackground(Color.BLACK);
 		
 		//Initialize Output Area to output text
-		outputArea = new JTextArea(21, 15);
+		outputArea = new JTextArea(16, 15);
 		outputArea.setLineWrap(true);
 		outputArea.setEditable(false);
 		JScrollPane scrConsole = new JScrollPane(outputArea);

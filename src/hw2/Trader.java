@@ -5,4 +5,5 @@ public interface Trader {
 	int getDemandOf(String r);
 	void changeSupplyOf(String r, int c);
 	void changeCapital(int c);
+	void setDemand(String r, int n);
 }

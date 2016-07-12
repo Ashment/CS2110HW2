@@ -127,4 +127,26 @@ public class Faction implements Trader{
 			special.SetSupply(supply);
 		}
 	}
+	
+	public int getDemandOf(String r){
+		int x = 0;
+		
+		//get Demand...
+		switch(r){
+			case "Alloy":
+				x = alloy.GetDemand();
+				break;
+			case "Biofuel":
+				x = biofuel.GetDemand();
+				break;
+			case "Stim":
+				x = stim.GetDemand();
+				break;
+			default:
+				x = 0;
+				break;
+		}
+		
+		return x;
+	}
 }

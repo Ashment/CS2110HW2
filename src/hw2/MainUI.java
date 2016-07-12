@@ -50,7 +50,6 @@ public class MainUI extends JFrame implements ActionListener{
 		outputArea.append(message);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if("cycle".equals(e.getActionCommand())){
 			//System.out.println("cycle button pressed");

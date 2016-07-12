@@ -7,6 +7,7 @@ public class Main {
 	public static Faction protoss, zerg, terran;
 	public static WorldMarket market;
 	public static JFrame frame;
+	public static MainUI ui;
 	Faction[] factions;
 	
 	public int cycleCount;
@@ -40,10 +41,13 @@ public class Main {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setVisible(true);
+		ui = (MainUI)frame;
 	}
 	
 	public void StartNewCycle(){
-		
+		cycleCount++;
+		ui.AddMessage("\nSimulating Market Cycle: " + cycleCount);
+		market.NewCycle();
 	}
 	
 	public int NumberRandom(int min, int max){

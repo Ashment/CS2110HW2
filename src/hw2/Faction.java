@@ -60,9 +60,7 @@ public class Faction implements Trader{
 	
 	//Debugging
 	public String toString(){
-		String s = "Factions: " + name + "\n"
-				+ "Producing " + specialty + " at: " + specialProductionPower + "/cycle \n";
-		return s;
+		return name;
 	}
 	
 	public int getSupplyOf(String r){

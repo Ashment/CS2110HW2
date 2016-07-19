@@ -5,7 +5,8 @@ public class Queue implements customerQueue{
 	Customer[] queue;
 	
 	//Constructor
-	public Queue(){
+	public Queue(String n){
+		name = n;
 		queue = new Customer[0];
 	}
 	

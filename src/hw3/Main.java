@@ -34,6 +34,9 @@ public class Main {
 		});
 	}
 	
+	public void NextCustomer(){
+		cQ.RemoveAt(0);
+	}
 	
 	public String[] SortDefaultStrings(){
 		//array of names of customers to return
@@ -59,7 +62,19 @@ public class Main {
 		return temp;
 	}
 	
-	public void NextCustomerString(){
+	//Find customer result can be directly printed to output
+	public String FindCustomer(String s){
+		String returnString = "";
 		
+		//loop through and test match for names
+		for(int i=0; i<cQ.GetLength(); i++){
+			if(cQ.GetCustomerAt(i).name == s){
+				returnString = s + " is #" + (i+1) + " in queue.";
+				return returnString;
+			}
+		}
+		
+		returnString = "Customer not found in queue.";
+		return returnString;
 	}
 }

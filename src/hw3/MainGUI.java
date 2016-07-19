@@ -33,10 +33,12 @@ public class MainGUI extends JFrame{
 		setBackground(Color.BLACK);
 		
 		//Initialize input and output UI
-		outputArea = new JTextArea(16, 15);
+		outputArea = new JTextArea(5, 5);
 		outputArea.setLineWrap(true);
-		outputArea.setEditable(false);
-		outputArea.setPreferredSize(new Dimension(550, 250));
+		//outputArea.setEditable(false);
+		outputArea.setBackground(Color.BLACK);
+		outputArea.setForeground(Color.WHITE);
+		outputArea.setPreferredSize(new Dimension(500, 300));
 		JScrollPane scrConsole = new JScrollPane(outputArea);
 		scrConsole.setBackground(Color.BLACK);
 		
@@ -51,8 +53,8 @@ public class MainGUI extends JFrame{
 		Container c = getContentPane();
 		c.setBackground(Color.DARK_GRAY);
 		initPanel();
-		c.add(outputArea, BorderLayout.CENTER);
 		c.add(topPanel, BorderLayout.NORTH);
+		c.add(scrConsole, BorderLayout.CENTER);
 	}
 	
 	void initPanel(){
@@ -67,6 +69,7 @@ public class MainGUI extends JFrame{
 		JLabel inputLabel = new JLabel("Input File Name: ");
 		inputLabel.setForeground(Color.WHITE);
 		
+		//Laying Out Panel
 		topPanel.setLayout(new FlowLayout());
 		topPanel.add(inputLabel);
 		topPanel.add(inputField);

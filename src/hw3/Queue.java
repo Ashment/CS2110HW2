@@ -82,4 +82,10 @@ public class Queue implements customerQueue{
 		
 		return alphabeticalC;
 	}
+
+	@Override
+	public int GetLength() {
+		//return length of queue
+		return queue.length;
+	}
 }

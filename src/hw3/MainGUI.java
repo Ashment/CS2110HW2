@@ -6,6 +6,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -27,9 +29,14 @@ public class MainGUI extends JFrame{
 	JPanel topPanel, botPanel;
 	JButton defaultButton, alphaButton, nextButton;
 	
+	FileParser fileParser;
+	
+	String[] printTargetArray;
+	
 	MainGUI(String title, Main m){
 		super(title);
 		main = m;
+		fileParser = new FileParser();
 		
 		//set layout
 		setLayout(new BorderLayout());
@@ -102,5 +109,44 @@ public class MainGUI extends JFrame{
 		botPanel.add(defaultButton);
 		botPanel.add(alphaButton);
 		botPanel.add(nextButton);
+	}
+	
+	public void UpdateInteractionBehavior(){
+		//Behavior
+		readButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				try {
+					fileParser.parseFile(inputField.getText());
+					
+				} catch (Exception e1) {
+					e1.printStackTrace();
+					outputArea.append("\n File Not Found!");
+				}
+			}
+		});
+		defaultButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				outputArea.append("\n Sorting by Queue Order... \n");
+				UpdateOutputArea(main.SortDefaultStrings());
+			}
+		});
+		alphaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				outputArea.append("\n Sorting by Alphabetical Order... \n");
+				UpdateOutputArea(main.SortAlphaStrings());
+			}
+		});
+		nextButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				main.NextCustomerString();
+				outputArea.append("\n Queue has modified to reflect the first in queue having been served. \n");
+			}
+		});
+	}
+	
+	public void UpdateOutputArea(String[] targetStrings){
+		for (int i=0; i<targetStrings.length; i++){
+			outputArea.append(targetStrings[i] + ", ");
+		}
 	}
 }

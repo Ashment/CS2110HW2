@@ -1,7 +1,7 @@
 package hw3;
 
 public class Customer {
-	String name;
+	public String name;
 	
 	public Customer(String n){
 		name = n;

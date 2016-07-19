@@ -6,4 +6,5 @@ public interface customerQueue {
 	public void AddToQueue(String s);
 	public void AddToQueue(Customer c);
 	public void RemoveAt(int i);
+	public Customer[] CustomerAlphabetical();
 }

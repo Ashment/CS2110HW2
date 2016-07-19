@@ -59,4 +59,27 @@ public class Queue implements customerQueue{
 		}
 		queue = newTempArr;
 	}
+	
+	@Override
+	public Customer[] CustomerAlphabetical() {
+		Customer[] alphabeticalC = new Customer[queue.length];
+		//copy elements over
+		for(int i=0; i<queue.length; i++){
+			alphabeticalC[i] = queue[i];
+		}
+		
+		//loop through all names in return array
+		for(int i=0; i<alphabeticalC.length; i++){
+			for(int j=i+1; j<alphabeticalC.length; j++){
+				//compare names, and switch spots
+				if(alphabeticalC[i].name.compareTo(alphabeticalC[j].name)>0){
+					Customer temp = alphabeticalC[i];
+					alphabeticalC[i] = alphabeticalC[j];
+					alphabeticalC[j] = temp;
+				}
+			}
+		}
+		
+		return alphabeticalC;
+	}
 }

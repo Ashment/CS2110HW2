@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.Border;
 
 public class MainGUI extends JFrame{
@@ -28,6 +29,8 @@ public class MainGUI extends JFrame{
 	Main main;
 	JPanel topPanel, botPanel;
 	JButton defaultButton, alphaButton, nextButton;
+	JTextField addToQueueField;
+	JButton addToQueueButton;
 	
 	FileParser fileParser;
 	
@@ -48,16 +51,17 @@ public class MainGUI extends JFrame{
 		//outputArea.setEditable(false);
 		outputArea.setBackground(Color.BLACK);
 		outputArea.setForeground(Color.WHITE);
-		outputArea.setPreferredSize(new Dimension(500, 300));
 		JScrollPane scrConsole = new JScrollPane(outputArea);
 		scrConsole.setBackground(Color.BLACK);
 		
 		inputField = new JTextField(10);
 		inputField.setForeground(Color.BLUE);
 		
-		//Initialize Button
+		//Initialize Some Components
 		readButton = new JButton("Read File");
 		readButton.setPreferredSize(new Dimension(80, 30));
+		addToQueueField = new JTextField(8);
+		addToQueueButton = new JButton("Add Name To Queue");
 		
 		
 		Container c = getContentPane();
@@ -67,6 +71,8 @@ public class MainGUI extends JFrame{
 		c.add(topPanel, BorderLayout.NORTH);
 		c.add(scrConsole, BorderLayout.CENTER);
 		c.add(botPanel, BorderLayout.SOUTH);
+		
+		UpdateInteractionBehavior();
 	}
 	
 	void initTopPanel(){
@@ -89,6 +95,7 @@ public class MainGUI extends JFrame{
 	}
 	
 	void initBotPanel(){
+		//Styling and Component Initialization
 		defaultButton = new JButton("Default");
 		alphaButton = new JButton("Alphabetical");
 		nextButton = new JButton("Next Customer");
@@ -109,15 +116,18 @@ public class MainGUI extends JFrame{
 		botPanel.add(defaultButton);
 		botPanel.add(alphaButton);
 		botPanel.add(nextButton);
+		botPanel.add(addToQueueField);
+		botPanel.add(addToQueueButton);
 	}
 	
 	public void UpdateInteractionBehavior(){
 		//Behavior
 		readButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
+				System.out.println("READ BUTTON");
 				try {
 					main.AnalyzeFile(fileParser.parseFile(inputField.getText()));
-					outputArea.append("\n File Names Added to Queue");
+					outputArea.append("\n File Names Added to Queue \n");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -125,20 +135,26 @@ public class MainGUI extends JFrame{
 		});
 		defaultButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				outputArea.append("\n Sorting by Queue Order... \n");
+				outputArea.append("\nSorting by Queue Order... \n");
 				UpdateOutputArea(main.SortDefaultStrings());
 			}
 		});
 		alphaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				outputArea.append("\n Sorting by Alphabetical Order... \n");
+				outputArea.append("\nSorting by Alphabetical Order... \n");
 				UpdateOutputArea(main.SortAlphaStrings());
 			}
 		});
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				main.NextCustomer();
-				outputArea.append("\n Queue has modified to reflect the first in queue having been served. \n");
+				outputArea.append("\nQueue has modified to reflect the first in queue having been served. \n");
+			}
+		});
+		addToQueueButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				main.cQ.AddToQueue(addToQueueField.getText());
+				outputArea.append("\nAdded " + addToQueueField.getText() + " to queue. \n");
 			}
 		});
 	}
@@ -147,5 +163,6 @@ public class MainGUI extends JFrame{
 		for (int i=0; i<targetStrings.length; i++){
 			outputArea.append(targetStrings[i] + ", ");
 		}
+		outputArea.append("\n");
 	}
 }

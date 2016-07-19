@@ -27,7 +27,7 @@ public class Main {
 			public void run() {
 				// TODO Auto-generated method stub
 				mainGUI = new MainGUI("Title", mainThis);
-				mainGUI.setSize(550, 450);
+				mainGUI.setSize(750, 450);
 				mainGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				mainGUI.setVisible(true);
 			}

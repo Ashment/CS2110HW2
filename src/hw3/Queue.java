@@ -6,10 +6,8 @@ public class Queue implements customerQueue{
 	
 	//Constructor
 	public Queue(){
-		queue = new Customer[0];		
+		queue = new Customer[0];
 	}
-	
-	
 	
 	
 	//Methods from interface

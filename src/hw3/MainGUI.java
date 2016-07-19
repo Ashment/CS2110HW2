@@ -23,10 +23,13 @@ public class MainGUI extends JFrame{
 	JTextField inputField;
 	JButton readButton;
 	
-	JPanel topPanel;
+	Main main;
+	JPanel topPanel, botPanel;
+	JButton defaultButton, alphaButton, nextButton;
 	
-	MainGUI(String title){
+	MainGUI(String title, Main m){
 		super(title);
+		main = m;
 		
 		//set layout
 		setLayout(new BorderLayout());
@@ -52,16 +55,18 @@ public class MainGUI extends JFrame{
 		
 		Container c = getContentPane();
 		c.setBackground(Color.DARK_GRAY);
-		initPanel();
+		initTopPanel();
+		initBotPanel();
 		c.add(topPanel, BorderLayout.NORTH);
 		c.add(scrConsole, BorderLayout.CENTER);
+		c.add(botPanel, BorderLayout.SOUTH);
 	}
 	
-	void initPanel(){
+	void initTopPanel(){
 		//PANEL
 		topPanel = new JPanel();
 		topPanel.setBackground(Color.DARK_GRAY);
-		topPanel.setPreferredSize(new Dimension(500, 50));
+		topPanel.setPreferredSize(new Dimension(500, 40));
 		
 		//BORDER + Label
 		Border windowBorder = BorderFactory.createLineBorder(Color.WHITE);
@@ -74,5 +79,28 @@ public class MainGUI extends JFrame{
 		topPanel.add(inputLabel);
 		topPanel.add(inputField);
 		topPanel.add(readButton);
+	}
+	
+	void initBotPanel(){
+		defaultButton = new JButton("Default");
+		alphaButton = new JButton("Alphabetical");
+		nextButton = new JButton("Next Customer");
+		
+		botPanel = new JPanel();
+		botPanel.setBackground(Color.DARK_GRAY);
+		botPanel.setPreferredSize(new Dimension(500, 40));
+		
+		//BORDER + Label
+		Border windowBorder = BorderFactory.createLineBorder(Color.WHITE);
+		botPanel.setBorder(windowBorder);
+		JLabel sortLabel = new JLabel("Sort: ");
+		sortLabel.setForeground(Color.WHITE);
+		
+		//Laying Out Panel
+		botPanel.setLayout(new FlowLayout());
+		botPanel.add(sortLabel);
+		botPanel.add(defaultButton);
+		botPanel.add(alphaButton);
+		botPanel.add(nextButton);
 	}
 }

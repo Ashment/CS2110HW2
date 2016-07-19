@@ -35,6 +35,7 @@ public class Main {
 	}
 	
 	public void NextCustomer(){
+		//Remove the first customer, and move others up (this method can be used with any index i and would work the same way)
 		cQ.RemoveAt(0);
 	}
 	

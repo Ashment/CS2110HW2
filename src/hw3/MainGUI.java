@@ -116,11 +116,10 @@ public class MainGUI extends JFrame{
 		readButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				try {
-					fileParser.parseFile(inputField.getText());
-					
+					main.AnalyzeFile(fileParser.parseFile(inputField.getText()));
+					outputArea.append("\n File Names Added to Queue");
 				} catch (Exception e1) {
 					e1.printStackTrace();
-					outputArea.append("\n File Not Found!");
 				}
 			}
 		});
@@ -138,7 +137,7 @@ public class MainGUI extends JFrame{
 		});
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				main.NextCustomerString();
+				main.NextCustomer();
 				outputArea.append("\n Queue has modified to reflect the first in queue having been served. \n");
 			}
 		});

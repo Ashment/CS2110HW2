@@ -78,4 +78,22 @@ public class Main {
 		returnString = "Customer not found in queue.";
 		return returnString;
 	}
+	
+	public void AnalyzeFile(String source){
+		System.out.println("ANALYZE FILE");
+		String[] inputArray;
+		
+		//Split received input string
+		inputArray = source.split(" ");
+		
+		//Convert string array to double array
+		for(int i=0; i<inputArray.length; i++){
+			try{
+				cQ.AddToQueue(inputArray[i]);
+			} catch (Exception e){
+				System.out.println(e);
+				return;
+			}
+		}
+	}
 }

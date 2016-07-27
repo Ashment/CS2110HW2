@@ -3,7 +3,7 @@ package hw4;
 import hw3.*;
 
 public class QThread implements Runnable{
-	Queue CashierQ = new Queue("cashier");
+	Queue CashierQ;
 	int t = 0;
 	
 	Thread thread;
@@ -40,6 +40,7 @@ public class QThread implements Runnable{
 	public void start ()
 	   {
 	      System.out.println("Starting " +  threadName );
+	      CashierQ = new Queue("cashier");
 	      if (thread == null)
 	      {
 	         thread = new Thread (this, threadName);

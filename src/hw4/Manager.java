@@ -10,21 +10,13 @@ public class Manager {
 	QThread[] cashiers = new QThread[10];
 	Manager managerThis;
 	
-	public manager(){
+	public Manager(){
 		managerThis = this;
 		//Initialize queue and have reference to interface
 		for(int i=0; i<cashiers.length; i++){
 			cashiers[i] = new QThread("Cashier No." + i);
+			cashiers[i].run();
+			System.out.print("Cashier " + i + " now running!");
 		}
-		
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				mainGUI = new MainGUI("Title", mainThis);
-				mainGUI.setSize(750, 450);
-				mainGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				mainGUI.setVisible(true);
-			}
-		});
+	}
 }

@@ -1,7 +1,6 @@
 package hw4;
 
 import hw3.*;
-import hw2.RandomNumbers;
 
 public class QThread implements Runnable{
 	Queue cashierQ;
@@ -11,7 +10,7 @@ public class QThread implements Runnable{
 	String threadName;
 	Manager manager;
 	
-	RandomNumbers rando;
+	String outputString;
 	
 	QThread (String name, Manager man) {
 		threadName = name;
@@ -49,15 +48,22 @@ public class QThread implements Runnable{
 		return (int)(Math.random() * range) + min;
 	}
 	
-	public void start ()
-	   {
-	      System.out.println("Starting " +  threadName );
-	      cashierQ = new Queue("cashier");
-	      if (thread == null)
-	      {
-	         thread = new Thread (this, threadName);
-	         thread.start ();
-	      }
-	   }
+	public void start (){
+		System.out.println("Starting " +  threadName );
+		cashierQ = new Queue("cashier");
+		if (thread == null){
+			thread = new Thread (this, threadName);
+			thread.start ();
+		}
+	}
 	
+	public String ToString(){
+		outputString = new String();
+		outputString += "\u26e9 \n";
+		for(int i=0; i<cashierQ.GetLength(); i++){
+			outputString += "\u2687  ";
+		}
+		outputString += "\n";
+		return outputString;
+	}
 }

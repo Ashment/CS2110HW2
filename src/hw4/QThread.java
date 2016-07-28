@@ -3,7 +3,7 @@ package hw4;
 import hw3.*;
 
 public class QThread implements Runnable{
-	Queue cashierQ;
+	public customerQueue cashierQ;
 	int t = 0;
 	
 	Thread thread;
@@ -13,6 +13,7 @@ public class QThread implements Runnable{
 	String outputString;
 	
 	QThread (String name, Manager man) {
+		//Reference to manager
 		threadName = name;
 		manager = man;
 		System.out.println("Thread " + threadName + " created.");
@@ -20,13 +21,13 @@ public class QThread implements Runnable{
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		//Time keeping / Thread Loop
 		for(;;){
-			if(t < 100){
+			if(t < 50){
 				//WAIT
 				t++;
 				try {
-					Thread.sleep(NumberRandom(80, 120));
+					Thread.sleep(NumberRandom(45, 155));
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -35,9 +36,12 @@ public class QThread implements Runnable{
 			}else{
 				//UPDATE PROGRESS
 				cashierQ.RemoveAt(0);
-				manager.OptimizeQueues();
+				if(NumberRandom(0, 10)<5){
+					manager.OptimizeQueues();
+				}
 				t = 0;
 				System.out.println(threadName + " progressed.");
+				manager.UpdateOutput();
 			}
 		}
 		
@@ -49,8 +53,13 @@ public class QThread implements Runnable{
 	}
 	
 	public void start (){
+		//Starts Thread
 		System.out.println("Starting " +  threadName );
 		cashierQ = new Queue("cashier");
+		//Add Initial 5 Customers per Queue
+		for(int i=0;i<NumberRandom(7, 10);i++){
+			cashierQ.AddToQueue("SomeDude");
+		}
 		if (thread == null){
 			thread = new Thread (this, threadName);
 			thread.start ();
@@ -58,12 +67,14 @@ public class QThread implements Runnable{
 	}
 	
 	public String ToString(){
+		//Function to generate UI Output String
 		outputString = new String();
-		outputString += "\u26e9 \n";
+		outputString += "\u26e9 " + threadName + " \u26e9 \n";
 		for(int i=0; i<cashierQ.GetLength(); i++){
-			outputString += "\u2687  ";
+			outputString += "    \u265f";
 		}
-		outputString += "\n";
+		outputString += "\n \n";
+		//Returns string to be printed by manager
 		return outputString;
 	}
 }

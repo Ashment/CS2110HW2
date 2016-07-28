@@ -2,8 +2,13 @@ CS2110 HW3
 
 Collaboration: done by Baizhou and Baichuan Hou
 
-To launch, run the .jar file or run Main.class through eclipse. Included is a test.txt file with can be read to easily test the functionality of the program. Names in the file to be read is to be separated by ONLY A SPACE, and will be sorted into queue in the order which they are read in the file. The buttons at the bottom allow the names in queue to be sorted alphabetically without disrupting the current order of the queue.
+Question 1
+The proofs for question 1 are named proof1a.pdf and proof1b.pdf and proof1c.pdf. Please take a look.
 
-The names being printed are actually just the names of customers, and thus can be effortlessly extended to access other data as needed, such as position in queue, or other information that needs to be stored in the Customer class. There is also the option to search for a specific person in queue, thus easily allows confirmation of whether or not a specific person is in queue. The queue is a normal linear queue, but allows for various features such as removing from a specific position in queue, searched by position in queue or by name, or any other info that can be extended through the Customer class.
 
-Unfortunately, we did not have time to work on implementing the second question, as we spent too much time creating a modular framework, but I am confident that with the existing modularity, creating 2 dimensional queues and multiple queues is not an issue at all.
+Question 2
+To launch, run the .jar file or run Manager.class through eclipse. In the console there is all the background things being printed, such as customers moving from queue to queue and customer joining queues. The program runs on 11 separate threads, with each cashier being its own individual thread, and a customer feeder, adding customers to cashier queues running in parallel. As mentioned from previous homework, the queue class is highly extendable, and has been implemented for the practical purpose of this assignment.
+
+The method of queue optimization is done by checking if there is a queue short enough to inspire a longer queue’s customer to join the other queue. Each queue has its own time keeping thread, which waits a random amount of time based on a deviation before clearing each customer. After each time a customer is added or removed or moved, the output window is updated, giving an accurate representation of the current status of the queues. Random numbers are utilized for adding customers to queues, too. It is also used to create realism in that the queues are not always being optimized.
+
+The program successfully demonstrates not only the extendability mentioned from the last homework, but also shows an understanding of multi-threaded processing, and use of “busy” flag and time keeping mechanism to simulate a real-time scenario while avoiding any processing conflicts.

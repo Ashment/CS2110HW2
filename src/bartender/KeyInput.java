@@ -4,9 +4,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter{
-	DebugMain m;
+	Main m;
 	
-	public KeyInput(DebugMain main){
+	public KeyInput(Main main){
 		m = main;
 	}
 	

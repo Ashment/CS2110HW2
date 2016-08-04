@@ -2,29 +2,30 @@ package bartender;
 
 import java.awt.event.KeyEvent;
 
-import javax.swing.JPanel;
+import javax.swing.JFrame;
 
-public class DebugMain extends JPanel{
+public class Main{
 	
-	public DebugMain(){
-		setSize(500, 500);
-		addKeyListener(new KeyInput(this));
+	JFrame debugFrame;
+	
+	public Main(){
 		new DrinksAndIngredients();
+		debugFrame = new frameStuff("TITLE", this);
 	}
 	
 	public static void main(String[] args) throws Exception{
-		new DebugMain();
+		new Main();
 	}
 
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		
-		System.out.println(key);
+		System.out.println("Key Released: " + key);
 	}
 	
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
-		System.out.println(key);
+		System.out.println("Key Pressed: " + key);
 	}
 }

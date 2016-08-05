@@ -2,6 +2,7 @@ package bartender;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -14,8 +15,9 @@ import javax.swing.JPanel;
 
 public class frameStuff extends JFrame {
 	
-	JPanel customersPanel;
-	JPanel[] cPanels = new JPanel[5];
+	JPanel customersPanel, testPanell;
+	Container c;
+	GridBagConstraints gc;
 	
 	public frameStuff(String title, Main d){
 		super(title);
@@ -23,39 +25,19 @@ public class frameStuff extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		setLayout(new BorderLayout());
-		
 		addKeyListener(new KeyInput(d));
+		setLayout(new GridBagLayout());
+		gc = new GridBagConstraints();
 		
-		customersPanel = new JPanel();
-		customersPanel.setSize(new Dimension(560, 150));
-		customersPanel.setBackground(Color.RED);
-		customersPanel.setLayout(new GridBagLayout());
-		GridBagConstraints gc = new GridBagConstraints();
+		customersPanel = new CustomersPanel();
 		
-		for(int i=0; i<cPanels.length; i++){
-			gc.gridx = i;
-			cPanels[i] = new JPanel();
-			cPanels[i].setLayout(new FlowLayout());
-			cPanels[i].setSize(60, 100);
-			cPanels[i].setBackground(Color.BLUE);
-			System.out.print(i);
-		}
+		c = getContentPane();
 		
-		gc.weightx = 1;
-		gc.weighty = 1;
+		gc.gridx = 0; gc.gridy = 0;
+		c.add(customersPanel, gc);
+		System.out.println("Added Panels");
 		
-		gc.gridx = 0;
-		customersPanel.add(cPanels[0], gc);
-		gc.gridx = 1;
-		customersPanel.add(cPanels[1], gc);
-		gc.gridx = 2;
-		customersPanel.add(cPanels[2], gc);
-		gc.gridx = 3;
-		customersPanel.add(cPanels[3], gc);
-		gc.gridx = 4;
-		customersPanel.add(cPanels[4], gc);
-		
-		add(customersPanel, BorderLayout.PAGE_START);
+		gc.gridx = 0; gc.gridy = 1; gc.weighty = 5;
+		c.add(testPanell, gc);
 	}
 }

@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 public class Main{
 	
 	static Main thisMain;
-	JFrame debugFrame;
+	Game game;
 	Graphics2D g;
 	
 	BufferedImage occHSprite = null;
@@ -23,7 +23,8 @@ public class Main{
 		new DrinksAndIngredients();
 	    javax.swing.SwingUtilities.invokeLater(new Runnable(){
 	        public void run(){
-	          debugFrame = new frameStuff("TITLE", thisMain);
+	          game = new Game("TITLE", thisMain, "Game Thread");
+	          game.start();
 	        }
 	    });
 	    

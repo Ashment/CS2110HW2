@@ -13,9 +13,11 @@ public class CustomerClass extends JLabel{
 	JLabel customerIcon, customerLabel, customerRequest;
 	
 	public CustomerClass(String name, ImageIcon hap, ImageIcon neut, ImageIcon sd, ImageIcon emp){
-		happy = hap; neutral = neut; sd = sad; empty = emp;
+		happy = hap; neutral = neut; sad = sd; empty = emp;
 		customerIcon = new JLabel(hap);
 		customerLabel = new JLabel(name);
 		customerRequest = new JLabel("Long Island");
+		
+		customerIcon.setIcon(happy);
 	}
 }

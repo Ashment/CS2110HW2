@@ -25,7 +25,7 @@ public class CustomersPanel extends JPanel{
 	GridBagConstraints gc;
 	JLabel c1Label;
 	
-	ImageIcon happy;
+	ImageIcon happy, neutral, sad, empty;
 	
 	CustomerClass c1, c2, c3, c4, c5;
 	
@@ -39,12 +39,16 @@ public class CustomersPanel extends JPanel{
 		gc.gridheight = 1;
 		System.out.println("CustomersPanel initialization");
 		
-		happy = new ImageIcon("OccHappy.png");
-		c1 = new CustomerClass("Customer1", happy, happy, happy, happy);
-		c2 = new CustomerClass("Customer2", happy, happy, happy, happy);
-		c3 = new CustomerClass("Customer3", happy, happy, happy, happy);
-		c4 = new CustomerClass("Customer4", happy, happy, happy, happy);
-		c5 = new CustomerClass("Customer5", happy, happy, happy, happy);
+		happy = new ImageIcon("Hap.png");
+		neutral = new ImageIcon("Neut.png");
+		sad = new ImageIcon("Sad.png");
+		empty = new ImageIcon("Emp.png");
+		
+		c1 = new CustomerClass("Customer1", happy, neutral, sad, empty);
+		c2 = new CustomerClass("Customer2", happy, neutral, sad, empty);
+		c3 = new CustomerClass("Customer3", happy, neutral, sad, empty);
+		c4 = new CustomerClass("Customer4", happy, neutral, sad, empty);
+		c5 = new CustomerClass("Customer5", happy, neutral, sad, empty);
 		
 		//Initialize Panels
 		gc.gridx=0;

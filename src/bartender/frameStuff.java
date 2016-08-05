@@ -27,7 +27,7 @@ public class frameStuff extends JFrame {
 	
 	public frameStuff(String title, Main d){
 		super(title);
-		setSize(800, 500);
+		setSize(1000, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);

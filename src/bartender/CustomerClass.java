@@ -6,11 +6,16 @@ import javax.swing.JPanel;
 
 public class CustomerClass extends JLabel{
 	static ImageIcon happy;
-	ImageIcon sad;
-	ImageIcon neutral;
-	ImageIcon empty;
+	static ImageIcon sad;
+	static ImageIcon neutral;
+	static ImageIcon empty;
 	
-	public CustomerClass(String name, ImageIcon img){
-		super(name, happy, JLabel.CENTER);
+	JLabel customerIcon, customerLabel, customerRequest;
+	
+	public CustomerClass(String name, ImageIcon hap, ImageIcon neut, ImageIcon sd, ImageIcon emp){
+		happy = hap; neutral = neut; sd = sad; empty = emp;
+		customerIcon = new JLabel(hap);
+		customerLabel = new JLabel(name);
+		customerRequest = new JLabel("Long Island");
 	}
 }

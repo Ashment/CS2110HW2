@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 
 public class Main{
 	
+	static Main thisMain;
 	JFrame debugFrame;
 	Graphics2D g;
 	
@@ -20,7 +21,12 @@ public class Main{
 	
 	public Main(){
 		new DrinksAndIngredients();
-		debugFrame = new frameStuff("TITLE", this);
+	    javax.swing.SwingUtilities.invokeLater(new Runnable(){
+	        public void run(){
+	          debugFrame = new frameStuff("TITLE", thisMain);
+	        }
+	    });
+	    
 		try {
 		    occHSprite = ImageIO.read(new File("occHappy.png"));
 		} catch (IOException e) {
@@ -30,7 +36,7 @@ public class Main{
 	}
 	
 	public static void main(String[] args) throws Exception{
-		new Main();
+		thisMain = new Main();
 	}
 
 	public void keyReleased(KeyEvent e) {

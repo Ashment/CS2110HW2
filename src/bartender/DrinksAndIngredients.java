@@ -1,10 +1,12 @@
 package bartender;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Hashtable;
 
 public class DrinksAndIngredients {
-	Hashtable<String, String> ingredients = new Hashtable<String, String>();
-	Drink[] drinks;
+	public static Hashtable<String, String> ingredients = new Hashtable<String, String>();
+	public static Drink[] drinks;
 	
 	public DrinksAndIngredients(){
 		//Initialize ingredients
@@ -44,8 +46,11 @@ public class DrinksAndIngredients {
 	}
 	
 	public String[] ConvertIngredients(String keys){
+		//Convert list of keys(ingredients) into a string array of ingredients
+		String alphaKeys = SortKeys(keys);
+		
 		String[] ingredients;
-		char[] ingChars = keys.toCharArray();
+		char[] ingChars = alphaKeys.toCharArray();
 		ingredients = new String[ingChars.length];
 		for(int i=0; i<ingChars.length; i++){
 			String temp = GetIngredient(Character.toString(ingChars[i]));
@@ -53,5 +58,35 @@ public class DrinksAndIngredients {
 		}
 		
 		return  ingredients;
+	}
+	
+	public String SortKeys(String keys){
+		Character[] chars = new Character[keys.length()];
+		
+		for(int i=0; i<chars.length; i++){
+			chars[i] = keys.charAt(i);
+		}
+		
+		Arrays.sort(chars, new Comparator<Character>(){
+			public int compare(Character c1, Character c2){
+				int cmp = Character.compare(
+					Character.toLowerCase(c1.charValue()),
+					Character.toLowerCase(c2.charValue())
+				);
+				if(cmp != 0){
+					return cmp;
+				}else{
+					return Character.compare(c1.charValue(), c2.charValue());
+				}
+			}
+		});
+		
+		//Rebuild String
+		StringBuilder sb = new StringBuilder(chars.length);
+		for(char c : chars){
+			sb.append(c);
+		}
+		
+		return sb.toString();
 	}
 }

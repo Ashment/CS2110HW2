@@ -3,12 +3,13 @@ package bartender;
 public class Drink {
 	public String name;
 	public String[] ingredients;
+	public String ing;
 	DrinksAndIngredients m;
 	
-	public Drink(String n, String ing, DrinksAndIngredients di){
+	public Drink(String n, String ings, DrinksAndIngredients di){
 		name = n;
 		m = di;
-		
+		ing = ings;
 		ingredients = m.ConvertIngredients(ing);
 		
 		//Debug: print the drink and its ingredients
@@ -24,6 +25,7 @@ public class Drink {
 				s += ", ";
 			}
 		}
+		s += (", CODE = " + ing);
 		
 		return s;
 	}

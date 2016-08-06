@@ -7,6 +7,7 @@ import java.util.Hashtable;
 public class DrinksAndIngredients {
 	public static Hashtable<String, String> ingredients = new Hashtable<String, String>();
 	public static Drink[] drinks;
+	public static Drink badDrink;
 	
 	public DrinksAndIngredients(){
 		//Initialize ingredients
@@ -35,9 +36,11 @@ public class DrinksAndIngredients {
 		drinks[8] = new Drink("Vodka Tonic", "DSW", this);
 		drinks[9] = new Drink("Djinn", "EQQT", this);
 		drinks[10] = new Drink("Moscow Snow", "FRWW", this);
+		
+		badDrink = new Drink("!#%@", "", this);
 	}
 	
-	public String GetIngredient(String key){
+	public static String GetIngredient(String key){
 		String t = ingredients.get(key);
 		if(t == ""){
 			t = "None";
@@ -45,7 +48,7 @@ public class DrinksAndIngredients {
 		return t;
 	}
 	
-	public String[] ConvertIngredients(String keys){
+	public static String[] ConvertIngredients(String keys){
 		//Convert list of keys(ingredients) into a string array of ingredients
 		String alphaKeys = SortKeys(keys);
 		
@@ -60,7 +63,7 @@ public class DrinksAndIngredients {
 		return  ingredients;
 	}
 	
-	public String SortKeys(String keys){
+	public static String SortKeys(String keys){
 		Character[] chars = new Character[keys.length()];
 		
 		for(int i=0; i<chars.length; i++){
@@ -84,9 +87,43 @@ public class DrinksAndIngredients {
 		//Rebuild String
 		StringBuilder sb = new StringBuilder(chars.length);
 		for(char c : chars){
-			sb.append(c);
+			sb.append(Character.toUpperCase(c));
 		}
 		
 		return sb.toString();
+	}
+	
+	public static Drink FindDrink(String keys){
+		Drink created = badDrink;
+		String sKeys = SortKeys(keys);
+		System.out.println("Creating from: " + sKeys);
+		String[] ings = ConvertIngredients(sKeys);
+		for(String s: ings){
+			System.out.println(s);
+		}
+		
+		boolean same = false;
+		for(int i=0; i<drinks.length; i++){
+			if(!same){
+				if(ings.length == drinks[i].ingredients.length){
+					same = true;
+					for(int j=0; j<ings.length; j++){
+						if(ings[j].equals(drinks[i].ingredients[j])){
+							System.out.println("Ingredient #" + j + " matches");
+						}else{
+							same = false;
+							break;
+						}
+					}
+					if(same){
+						created = drinks[i];
+						break;
+					}
+				}
+			}
+		}
+		System.out.println("Created Drink: " + created.name);
+		
+		return created;
 	}
 }

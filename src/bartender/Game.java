@@ -20,7 +20,7 @@ public class Game extends JFrame implements Runnable{
 	
 	String currentIngredients;
 	
-	public Drink curentDrink;
+	public Drink currentDrink;
 	
 	public Game(String title, Main d, String tName){
 		super(title);
@@ -79,7 +79,7 @@ public class Game extends JFrame implements Runnable{
 		char c = (char)e.getKeyCode();
 		if(c == "Q".charAt(0) || c == "W".charAt(0) || c == "E".charAt(0) || c == "R".charAt(0) || c == "T".charAt(0) || c == "Y".charAt(0) || c == "U".charAt(0) ||
 				c == "A".charAt(0) || c == "S".charAt(0) || c == "D".charAt(0) || c == "F".charAt(0)){
-			String str = Character.toString(c);
+			String str = Character.toString(Character.toUpperCase(c));
 			System.out.println("Inputted Ingredient: " + str);
 			if(currentIngredients.length() < 4){
 				currentIngredients += str;
@@ -96,11 +96,12 @@ public class Game extends JFrame implements Runnable{
 	}
 	
 	public void ResetDrink(){
-		
+		currentIngredients = "";
+		currentDrink = null;
 	}
 	
 	public void CreateDrink(){
-		
+		currentDrink = DrinksAndIngredients.FindDrink(currentIngredients);
 	}
 	
 	public void UpdateMixerUI(){

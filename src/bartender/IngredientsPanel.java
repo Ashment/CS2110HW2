@@ -43,7 +43,7 @@ public class IngredientsPanel extends JPanel{
 		dd = new JLabel(" D-Tonic Water "); dd.setBorder(border);
 		ff = new JLabel(" F-Juice "); ff.setBorder(border);
 		
-		gc.insets = new Insets(10, 10, 10, 10);
+		gc.insets = new Insets(10, 5, 10, 5);
 		//Add Labels
 		gc.gridy = 0;
 		gc.gridx = 0;

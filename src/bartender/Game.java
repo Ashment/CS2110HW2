@@ -4,12 +4,19 @@ import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.InputStream;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Game extends JFrame {
+public class Game extends JFrame implements Runnable{
 	
 	Thread thread;
 	String threadName;
@@ -53,6 +60,8 @@ public class Game extends JFrame {
 		
 		InitiateCustomerLists();
 		currentIngredients = "";
+		
+		StartMusic();
 	}
 	
 	public void InitiateCustomerLists(){
@@ -125,5 +134,46 @@ public class Game extends JFrame {
 	
 	public void ServeCustomer(int index){
 		customersPanel.Serve(index, currentDrink);
+	}
+	
+	void StartMusic(){
+		try {
+		    File yourFile = new File("Beers and Blues.wav");
+		    AudioInputStream stream;
+		    AudioFormat format;
+		    DataLine.Info info;
+		    Clip clip;
+
+		    stream = AudioSystem.getAudioInputStream(yourFile);
+		    format = stream.getFormat();
+		    info = new DataLine.Info(Clip.class, format);
+		    clip = (Clip) AudioSystem.getLine(info);
+		    clip.open(stream);
+		    clip.start();
+		}
+		catch (Exception e) {
+		    //whatevers
+		}
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		for(;;){
+			try {
+				Thread.sleep(128000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			StartMusic();
+		}
+	}
+	
+	public void start(){
+		if(thread == null){
+			thread = new Thread(this, threadName);
+			thread.start();
+		}
 	}
 }

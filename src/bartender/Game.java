@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Game extends JFrame implements Runnable{
+public class Game extends JFrame {
 	
 	Thread thread;
 	String threadName;
@@ -53,23 +53,6 @@ public class Game extends JFrame implements Runnable{
 		
 		InitiateCustomerLists();
 		currentIngredients = "";
-	}
-	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		for(;;){
-			//System.out.println("game run");
-		}
-	}
-	
-	public void start(){
-		System.out.println("Starting Game Frame");
-		
-		if(thread == null){
-			thread = new Thread(this, threadName);
-			thread.start();
-		}
 	}
 	
 	public void InitiateCustomerLists(){

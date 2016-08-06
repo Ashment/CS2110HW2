@@ -35,7 +35,7 @@ public class CustomerList implements Runnable{
 		for(;;){
 			//Customer List Loop
 			try {
-				Thread.sleep(NumberRandom(1050, 1350));
+				Thread.sleep(NumberRandom(1100, 1500));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

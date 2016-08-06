@@ -23,8 +23,7 @@ public class Main{
 		new DrinksAndIngredients();
 	    javax.swing.SwingUtilities.invokeLater(new Runnable(){
 	        public void run(){
-	          game = new Game("TITLE", thisMain, "Game Thread");
-	          game.start();
+	          game = new Game("BARTENDING LAIFU", thisMain, "Game Thread");
 	        }
 	    });
 	    

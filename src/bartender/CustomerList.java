@@ -50,7 +50,7 @@ public class CustomerList implements Runnable{
 	}
 	
 	public static int NumberRandom(int min, int max){
-		int range = (max - min);     
+		int range = (max - min);
 		return (int)Math.floor((Math.random() * range) + min);
 	}
 }

@@ -13,10 +13,10 @@ public class CustomerList implements Runnable{
 		threadName = tName;
 		display = cDisplay;
 		
-		int customerLine = NumberRandom(6, 13);
+		int customerLine = NumberRandom(6, 15);
 		customers = new Customer[customerLine];
 		for(int i=0; i<customerLine; i++){
-			Drink randomDrink = drinks[NumberRandom(0, (drinks.length - 1))];
+			Drink randomDrink = drinks[NumberRandom(0, drinks.length)];
 			customers[i] = new Customer(randomDrink);
 		}
 		currentCustomer = customers[0];
@@ -50,7 +50,7 @@ public class CustomerList implements Runnable{
 	}
 	
 	public static int NumberRandom(int min, int max){
-		int range = (max - min) + 1;     
-		return (int)(Math.random() * range) + min;
+		int range = (max - min);     
+		return (int)Math.floor((Math.random() * range) + min);
 	}
 }

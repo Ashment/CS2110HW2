@@ -9,7 +9,7 @@ public class Customer {
 	public Customer(Drink dr){
 		wantedDrink = dr;
 		
-		patience = CustomerList.NumberRandom(28, 40);
+		patience = CustomerList.NumberRandom(24, 38);
 		cPatience = patience;
 	}
 }

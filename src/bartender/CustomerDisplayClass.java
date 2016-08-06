@@ -1,8 +1,11 @@
 package bartender;
 
+import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class CustomerDisplayClass extends JLabel{
 	static ImageIcon happy;
@@ -16,8 +19,11 @@ public class CustomerDisplayClass extends JLabel{
 	public CustomerDisplayClass(String drinkWanted, ImageIcon hap, ImageIcon neut, ImageIcon sd, ImageIcon emp){
 		happy = hap; neutral = neut; sad = sd; empty = emp;
 		order = drinkWanted;
-		customerIcon = new JLabel(hap);
+		customerIcon = new JLabel(happy);
 		customerLabel = new JLabel(drinkWanted);
+		customerLabel.setPreferredSize(new Dimension(95, 20));
+		customerLabel.setMinimumSize(new Dimension(95, 20));
+		customerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		customerIcon.setIcon(happy);
 	}

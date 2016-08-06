@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,12 +14,14 @@ public class Game extends JFrame implements Runnable{
 	Thread thread;
 	String threadName;
 	
-	JPanel customersPanel;
+	CustomersPanel customersPanel;
 	IngredientsPanel ingredientsPanel;
+	BartendingPanel bartendingPanel;
 	Container c;
 	GridBagConstraints gc;
 	
 	String currentIngredients;
+	ImageIcon[] mixerIcons;
 	
 	public Drink currentDrink;
 	
@@ -33,8 +36,10 @@ public class Game extends JFrame implements Runnable{
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
 		
-		customersPanel = new CustomersPanel();
+		customersPanel = new CustomersPanel(this);
 		ingredientsPanel = new IngredientsPanel();
+		FindMixerIcons();
+		bartendingPanel = new BartendingPanel(mixerIcons[0], null);
 		
 		c = getContentPane();
 		
@@ -42,6 +47,8 @@ public class Game extends JFrame implements Runnable{
 		c.add(customersPanel, gc);
 		gc.gridx = 0; gc.gridy = 1;
 		c.add(ingredientsPanel, gc);
+		gc.gridx = 1; gc.gridy = 0; gc.gridheight = 2;
+		c.add(bartendingPanel, gc);
 		System.out.println("Added Panels");
 		
 		InitiateCustomerLists();
@@ -88,23 +95,52 @@ public class Game extends JFrame implements Runnable{
 			}
 		}else if(key == 8){
 			//backspace
-			ResetDrink();
+			KillDrink(true);
 		}else if(key == 32){
 			//space bar
-			CreateDrink();
+			if(currentIngredients != ""){
+				CreateDrink();
+			}
+		}else if(c == "1".charAt(0) || c == "2".charAt(0) || c == "3".charAt(0) || c == "4".charAt(0) || c == "5".charAt(0)){
+			int cIndex = Character.getNumericValue(c);
+			cIndex--;
+			ServeCustomer(cIndex);
 		}
+	}
+	
+	public void KillDrink(boolean CLEAR){
+		if(CLEAR) ResetDrink();
+		currentDrink = null;
+		bartendingPanel.UpdateDrink(currentDrink);
 	}
 	
 	public void ResetDrink(){
 		currentIngredients = "";
-		currentDrink = null;
+		UpdateMixerUI();
 	}
 	
 	public void CreateDrink(){
 		currentDrink = DrinksAndIngredients.FindDrink(currentIngredients);
+		bartendingPanel.UpdateDrink(currentDrink);
+		ResetDrink();
 	}
 	
 	public void UpdateMixerUI(){
-		
+		bartendingPanel.SetMixerIcon(mixerIcons[currentIngredients.length()]);
+	}
+	
+	public void FindMixerIcons(){
+		mixerIcons = new ImageIcon[5];
+		for(int i=0; i<mixerIcons.length; i++){
+			String name = "fill";
+			name += i;
+			name += ".png";
+			ImageIcon c = new ImageIcon(name);
+			mixerIcons[i] = c;
+		}
+	}
+	
+	public void ServeCustomer(int index){
+		customersPanel.Serve(index, currentDrink);
 	}
 }

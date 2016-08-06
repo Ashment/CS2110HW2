@@ -19,7 +19,7 @@ public class IngredientsPanel extends JPanel{
 	
 	public IngredientsPanel(){
 		//Initialize JPanel
-		setPreferredSize(new Dimension(600, 200));
+		setPreferredSize(new Dimension(600, 150));
 		setBackground(Color.GREEN);
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();

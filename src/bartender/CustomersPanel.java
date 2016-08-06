@@ -29,8 +29,11 @@ public class CustomersPanel extends JPanel{
 	
 	CustomerDisplayClass c1, c2, c3, c4, c5;
 	public CustomerList[] lists;
+	Game g;
 	
-	public CustomersPanel(){
+	public CustomersPanel(Game gg){
+		g = gg;
+		
 		setPreferredSize(new Dimension(600, 150));
 		//setSize(600, 150);
 		setBackground(Color.RED);
@@ -56,7 +59,7 @@ public class CustomersPanel extends JPanel{
 		gc.gridy=0;
 		
 		gc.gridx = 0; gc.gridy = 0;
-		gc.insets = new Insets(5, 5, 5, 5);
+		gc.insets = new Insets(5, 15, 5, 15);
 		add(c1.customerIcon, gc);
 		gc.gridy = 1;
 		add(c1.customerLabel, gc);
@@ -97,10 +100,18 @@ public class CustomersPanel extends JPanel{
     public void CreateLists(){
     	System.out.println("CreateLists called in CustomersPanel");
     	lists = new CustomerList[5];
-    	lists[0] = new CustomerList(c1, "customer list 1");
-    	lists[1] = new CustomerList(c2, "customer list 2");
-    	lists[2] = new CustomerList(c3, "customer list 3");
-    	lists[3] = new CustomerList(c4, "customer list 4");
-    	lists[4] = new CustomerList(c5, "customer list 5");
+    	lists[0] = new CustomerList(c1, "customer list 1", g);
+    	lists[1] = new CustomerList(c2, "customer list 2", g);
+    	lists[2] = new CustomerList(c3, "customer list 3", g);
+    	lists[3] = new CustomerList(c4, "customer list 4", g);
+    	lists[4] = new CustomerList(c5, "customer list 5", g);
+    	
+    	for(CustomerList ll: lists){
+    		ll.start();
+    	}
+    }
+    
+    public void Serve(int i, Drink d){
+    	lists[i].ServeDrink(d);
     }
 }

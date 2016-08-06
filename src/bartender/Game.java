@@ -43,7 +43,7 @@ public class Game extends JFrame implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		for(;;){
-			System.out.println("game run");
+			//System.out.println("game run");
 		}
 	}
 	
@@ -57,7 +57,6 @@ public class Game extends JFrame implements Runnable{
 	}
 	
 	public void InitiateCustomerLists(){
-		
+		((CustomersPanel) customersPanel).CreateLists();
 	}
-
 }

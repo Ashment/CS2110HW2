@@ -28,6 +28,7 @@ public class CustomersPanel extends JPanel{
 	ImageIcon happy, neutral, sad, empty;
 	
 	CustomerClass c1, c2, c3, c4, c5;
+	public CustomerList[] lists;
 	
 	public CustomersPanel(){
 		setPreferredSize(new Dimension(600, 150));
@@ -91,5 +92,15 @@ public class CustomersPanel extends JPanel{
             System.err.println("Couldn't find file: " + path);
             return null;
         }
+    }
+    
+    public void CreateLists(){
+    	System.out.println("CreateLists caleld in CustomersPanel");
+    	lists = new CustomerList[5];
+    	lists[0] = new CustomerList(c1);
+    	lists[1] = new CustomerList(c2);
+    	lists[2] = new CustomerList(c3);
+    	lists[3] = new CustomerList(c4);
+    	lists[4] = new CustomerList(c5);
     }
 }

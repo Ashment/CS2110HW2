@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -18,7 +19,7 @@ public class IngredientsPanel extends JPanel{
 	
 	public IngredientsPanel(){
 		//Initialize JPanel
-		setPreferredSize(new Dimension(600, 250));
+		setPreferredSize(new Dimension(600, 200));
 		setBackground(Color.GREEN);
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
@@ -30,18 +31,19 @@ public class IngredientsPanel extends JPanel{
 		border = BorderFactory.createLineBorder(Color.black);
 		
 		//Initialize Labels
-		qq = new JLabel("Q-Gin"); qq.setBorder(border);
-		ww = new JLabel("W-Vodka"); ww.setBorder(border);
-		ee = new JLabel("E-Whiskey"); ee.setBorder(border);
-		rr = new JLabel("R-Vermouth"); rr.setBorder(border);
-		tt = new JLabel("T-Tequila"); tt.setBorder(border);
-		yy = new JLabel("Y-Beer"); yy.setBorder(border);
-		uu = new JLabel("U-Rum"); uu.setBorder(border);
-		aa = new JLabel("A-Sugar"); aa.setBorder(border);
-		ss = new JLabel("S-Lime"); ss.setBorder(border);
-		dd = new JLabel("D-Tonic Water"); dd.setBorder(border);
-		ff = new JLabel("F-Juice"); ff.setBorder(border);
+		qq = new JLabel(" Q-Gin "); qq.setBorder(border);
+		ww = new JLabel(" W-Vodka "); ww.setBorder(border);
+		ee = new JLabel(" E-Whiskey "); ee.setBorder(border);
+		rr = new JLabel(" R-Vermouth "); rr.setBorder(border);
+		tt = new JLabel(" T-Tequila "); tt.setBorder(border);
+		yy = new JLabel(" Y-Beer "); yy.setBorder(border);
+		uu = new JLabel(" U-Rum "); uu.setBorder(border);
+		aa = new JLabel(" A-Sugar "); aa.setBorder(border);
+		ss = new JLabel(" S-Lime "); ss.setBorder(border);
+		dd = new JLabel(" D-Tonic Water "); dd.setBorder(border);
+		ff = new JLabel(" F-Juice "); ff.setBorder(border);
 		
+		gc.insets = new Insets(10, 10, 10, 10);
 		//Add Labels
 		gc.gridy = 0;
 		gc.gridx = 0;

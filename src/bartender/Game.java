@@ -13,6 +13,7 @@ public class Game extends JFrame implements Runnable{
 	String threadName;
 	
 	JPanel customersPanel;
+	IngredientsPanel ingredientsPanel;
 	Container c;
 	GridBagConstraints gc;
 	
@@ -29,11 +30,14 @@ public class Game extends JFrame implements Runnable{
 		gc = new GridBagConstraints();
 		
 		customersPanel = new CustomersPanel();
+		ingredientsPanel = new IngredientsPanel();
 		
 		c = getContentPane();
 		
 		gc.gridx = 0; gc.gridy = 0;
 		c.add(customersPanel, gc);
+		gc.gridx = 0; gc.gridy = 1;
+		c.add(ingredientsPanel, gc);
 		System.out.println("Added Panels");
 		
 		InitiateCustomerLists();

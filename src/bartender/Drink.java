@@ -1,16 +1,21 @@
 package bartender;
 
+import javax.swing.ImageIcon;
+
 public class Drink {
 	public String name;
 	public String[] ingredients;
 	public String ing;
 	DrinksAndIngredients m;
 	
-	public Drink(String n, String ings, DrinksAndIngredients di){
+	public ImageIcon icon;
+	
+	public Drink(String n, String ings, DrinksAndIngredients di, String iconLocation){
 		name = n;
 		m = di;
 		ing = ings;
 		ingredients = m.ConvertIngredients(ing);
+		icon = new ImageIcon(iconLocation);
 		
 		//Debug: print the drink and its ingredients
 		System.out.println("Drink " + name + ": " + IngredientPrint());

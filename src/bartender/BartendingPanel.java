@@ -23,7 +23,7 @@ public class BartendingPanel extends JPanel{
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
 		
-		drinkLabel = new JLabel(mixer);
+		drinkLabel = new JLabel(drink);
 		drinkName = new JLabel("  ");
 		mixerLabel = new JLabel(mixer);
 		
@@ -44,8 +44,10 @@ public class BartendingPanel extends JPanel{
 	
 	public void UpdateDrink(Drink d){
 		if(d != null){
+			drinkLabel.setIcon(d.icon);
 			drinkName.setText(d.name);
 		}else{
+			drinkLabel.setIcon(DrinksAndIngredients.badDrink.icon);
 			drinkName.setText("  ");
 		}
 	}

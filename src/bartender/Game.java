@@ -39,7 +39,7 @@ public class Game extends JFrame implements Runnable{
 		customersPanel = new CustomersPanel(this);
 		ingredientsPanel = new IngredientsPanel();
 		FindMixerIcons();
-		bartendingPanel = new BartendingPanel(mixerIcons[0], null);
+		bartendingPanel = new BartendingPanel(mixerIcons[0], DrinksAndIngredients.badDrink.icon);
 		
 		c = getContentPane();
 		

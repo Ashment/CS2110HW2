@@ -25,19 +25,19 @@ public class DrinksAndIngredients {
 		
 		//Initialize Drinks
 		drinks = new Drink[11];
-		drinks[0] = new Drink("Gin Tonic", "ADQ", this);
-		drinks[1] = new Drink("Martini", "QRSW", this);
-		drinks[2] = new Drink("Long Island", "QTUW", this);
-		drinks[3] = new Drink("Manhatten", "ERS", this);
-		drinks[4] = new Drink("Risky", "DEW", this);
-		drinks[5] = new Drink("Bacardi", "ASU", this);
-		drinks[6] = new Drink("Ithaca Storm", "FUWY", this);
-		drinks[7] = new Drink("Foxhound", "RSTY", this);
-		drinks[8] = new Drink("Vodka Tonic", "DSW", this);
-		drinks[9] = new Drink("Djinn", "EQQT", this);
-		drinks[10] = new Drink("Moscow Snow", "FRWW", this);
+		drinks[0] = new Drink("Gin Tonic", "ADQ", this, "Drinks/GinTonic.png");
+		drinks[1] = new Drink("Martini", "QRSW", this, "Drinks/Martini.png");
+		drinks[2] = new Drink("Long Island", "QTUW", this, "Drinks/LongIsland.png");
+		drinks[3] = new Drink("Manhatten", "ERS", this, "Drinks/Manhatten.png");
+		drinks[4] = new Drink("Risky", "DEW", this, "Drinks/Risky.png");
+		drinks[5] = new Drink("Bacardi", "ASU", this, "Drinks/Bacardi.png");
+		drinks[6] = new Drink("Ithaca Storm", "FUWY", this, "Drinks/IthacaStorm.png");
+		drinks[7] = new Drink("Foxhound", "RSTY", this, "Drinks/Foxhound.png");
+		drinks[8] = new Drink("Vodka Tonic", "DSW", this, "Drinks/VodkaTonic.png");
+		drinks[9] = new Drink("Djinn", "EQQT", this, "Drinks/Djinn.png");
+		drinks[10] = new Drink("Moscow Snow", "FRWW", this, "Drinks/MoscowSnow.png");
 		
-		badDrink = new Drink("!#%@", "", this);
+		badDrink = new Drink("!#%@", "", this, "Drinks/Empty.png");
 	}
 	
 	public static String GetIngredient(String key){

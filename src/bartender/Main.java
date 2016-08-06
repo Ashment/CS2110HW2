@@ -42,7 +42,7 @@ public class Main{
 
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
-		
+		//game.keyReleased(e.getKeyCode());
 		System.out.println("Key Released: " + key);
 	}
 	

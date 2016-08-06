@@ -3,6 +3,7 @@ package bartender;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,6 +18,9 @@ public class Game extends JFrame implements Runnable{
 	Container c;
 	GridBagConstraints gc;
 	
+	String currentIngredients;
+	
+	public Drink curentDrink;
 	
 	public Game(String title, Main d, String tName){
 		super(title);
@@ -25,7 +29,7 @@ public class Game extends JFrame implements Runnable{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		addKeyListener(new KeyInput(d));
+		addKeyListener(new KeyInput(this));
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
 		
@@ -41,6 +45,7 @@ public class Game extends JFrame implements Runnable{
 		System.out.println("Added Panels");
 		
 		InitiateCustomerLists();
+		currentIngredients = "";
 	}
 	
 	@Override
@@ -62,5 +67,43 @@ public class Game extends JFrame implements Runnable{
 	
 	public void InitiateCustomerLists(){
 		((CustomersPanel) customersPanel).CreateLists();
+	}
+	
+	public void keyPressed(KeyEvent e){
+		int key = e.getKeyCode();
+	}
+	
+	public void keyReleased(KeyEvent e){
+		int key = e.getKeyCode();
+		System.out.println(key);
+		char c = (char)e.getKeyCode();
+		if(c == "Q".charAt(0) || c == "W".charAt(0) || c == "E".charAt(0) || c == "R".charAt(0) || c == "T".charAt(0) || c == "Y".charAt(0) || c == "U".charAt(0) ||
+				c == "A".charAt(0) || c == "S".charAt(0) || c == "D".charAt(0) || c == "F".charAt(0)){
+			String str = Character.toString(c);
+			System.out.println("Inputted Ingredient: " + str);
+			if(currentIngredients.length() < 4){
+				currentIngredients += str;
+				System.out.println("Current Ingredients: " + currentIngredients);
+				UpdateMixerUI();
+			}
+		}else if(key == 8){
+			//backspace
+			ResetDrink();
+		}else if(key == 32){
+			//space bar
+			CreateDrink();
+		}
+	}
+	
+	public void ResetDrink(){
+		
+	}
+	
+	public void CreateDrink(){
+		
+	}
+	
+	public void UpdateMixerUI(){
+		
 	}
 }

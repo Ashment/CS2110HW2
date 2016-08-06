@@ -35,6 +35,8 @@ public class Game extends JFrame implements Runnable{
 		gc.gridx = 0; gc.gridy = 0;
 		c.add(customersPanel, gc);
 		System.out.println("Added Panels");
+		
+		InitiateCustomerLists();
 	}
 	
 	@Override
@@ -52,6 +54,10 @@ public class Game extends JFrame implements Runnable{
 			thread = new Thread(this, threadName);
 			thread.start();
 		}
+	}
+	
+	public void InitiateCustomerLists(){
+		
 	}
 
 }

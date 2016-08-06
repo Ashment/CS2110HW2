@@ -9,13 +9,15 @@ public class CustomerClass extends JLabel{
 	static ImageIcon sad;
 	static ImageIcon neutral;
 	static ImageIcon empty;
+	public String order;
 	
 	JLabel customerIcon, customerLabel, customerRequest;
 	
-	public CustomerClass(String name, ImageIcon hap, ImageIcon neut, ImageIcon sd, ImageIcon emp){
+	public CustomerClass(String drinkWanted, ImageIcon hap, ImageIcon neut, ImageIcon sd, ImageIcon emp){
 		happy = hap; neutral = neut; sad = sd; empty = emp;
+		order = drinkWanted;
 		customerIcon = new JLabel(hap);
-		customerLabel = new JLabel(name);
+		customerLabel = new JLabel(drinkWanted);
 		customerRequest = new JLabel("Long Island");
 		
 		customerIcon.setIcon(happy);

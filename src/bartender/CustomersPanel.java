@@ -27,7 +27,7 @@ public class CustomersPanel extends JPanel{
 	
 	ImageIcon happy, neutral, sad, empty;
 	
-	CustomerClass c1, c2, c3, c4, c5;
+	CustomerDisplayClass c1, c2, c3, c4, c5;
 	public CustomerList[] lists;
 	
 	public CustomersPanel(){
@@ -45,11 +45,11 @@ public class CustomersPanel extends JPanel{
 		sad = new ImageIcon("Sad.png");
 		empty = new ImageIcon("Emp.png");
 		
-		c1 = new CustomerClass("Customer1", happy, neutral, sad, empty);
-		c2 = new CustomerClass("Customer2", happy, neutral, sad, empty);
-		c3 = new CustomerClass("Customer3", happy, neutral, sad, empty);
-		c4 = new CustomerClass("Customer4", happy, neutral, sad, empty);
-		c5 = new CustomerClass("Customer5", happy, neutral, sad, empty);
+		c1 = new CustomerDisplayClass("Customer1", happy, neutral, sad, empty);
+		c2 = new CustomerDisplayClass("Customer2", happy, neutral, sad, empty);
+		c3 = new CustomerDisplayClass("Customer3", happy, neutral, sad, empty);
+		c4 = new CustomerDisplayClass("Customer4", happy, neutral, sad, empty);
+		c5 = new CustomerDisplayClass("Customer5", happy, neutral, sad, empty);
 		
 		//Initialize Panels
 		gc.gridx=0;
@@ -95,12 +95,12 @@ public class CustomersPanel extends JPanel{
     }
     
     public void CreateLists(){
-    	System.out.println("CreateLists caleld in CustomersPanel");
+    	System.out.println("CreateLists called in CustomersPanel");
     	lists = new CustomerList[5];
-    	lists[0] = new CustomerList(c1);
-    	lists[1] = new CustomerList(c2);
-    	lists[2] = new CustomerList(c3);
-    	lists[3] = new CustomerList(c4);
-    	lists[4] = new CustomerList(c5);
+    	lists[0] = new CustomerList(c1, "customer list 1");
+    	lists[1] = new CustomerList(c2, "customer list 2");
+    	lists[2] = new CustomerList(c3, "customer list 3");
+    	lists[3] = new CustomerList(c4, "customer list 4");
+    	lists[4] = new CustomerList(c5, "customer list 5");
     }
 }

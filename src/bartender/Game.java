@@ -48,6 +48,7 @@ public class Game extends JFrame implements Runnable{
 		addKeyListener(new KeyInput(this));
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
+		setResizable(false);
 		
 		customersPanel = new CustomersPanel(this);
 		ingredientsPanel = new IngredientsPanel();

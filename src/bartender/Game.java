@@ -39,6 +39,7 @@ public class Game extends JFrame implements Runnable{
 	public Drink currentDrink;
 	
 	public Game(String title, Main d, String tName){
+		//GUI Construction
 		super(title);
 		threadName = tName;
 		setSize(830, 370);

@@ -28,7 +28,7 @@ public class DrinksAndIngredients {
 		drinks[0] = new Drink("Gin Tonic", "ADQ", this, "Drinks/GinTonic.png");
 		drinks[1] = new Drink("Martini", "QRSW", this, "Drinks/Martini.png");
 		drinks[2] = new Drink("Long Island", "QTUW", this, "Drinks/LongIsland.png");
-		drinks[3] = new Drink("Manhattan", "ERS", this, "Drinks/Manhatten.png");
+		drinks[3] = new Drink("Manhattan", "ERS", this, "Drinks/Manhattan.png");
 		drinks[4] = new Drink("Risky", "DEW", this, "Drinks/Risky.png");
 		drinks[5] = new Drink("Bacardi", "ASU", this, "Drinks/Bacardi.png");
 		drinks[6] = new Drink("Ithaca Storm", "FUWY", this, "Drinks/IthacaStorm.png");

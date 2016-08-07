@@ -1,8 +1,10 @@
 package bartender;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.InputStream;
@@ -12,9 +14,12 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class Game extends JFrame implements Runnable{
 	
@@ -36,7 +41,7 @@ public class Game extends JFrame implements Runnable{
 	public Game(String title, Main d, String tName){
 		super(title);
 		threadName = tName;
-		setSize(1000, 800);
+		setSize(830, 370);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -51,14 +56,20 @@ public class Game extends JFrame implements Runnable{
 		RecipePanel r = new RecipePanel();
 		
 		c = getContentPane();
-		
-		gc.gridx = 0; gc.gridy = 0; gc.gridheight = 2;
+		c.setBackground(Color.BLACK);
+		JLabel titleLabel = new JLabel("CS-21 Bar-10-ding");
+		titleLabel.setBackground(Color.BLACK);
+		titleLabel.setForeground(Color.WHITE);
+		gc.gridx = 0; gc.gridy = 0; gc.gridwidth = 3; gc.insets = new Insets(0, 0, 12, 0);
+		c.add(titleLabel, gc);
+		gc.insets = new Insets(0, 0, 0, 0);
+		gc.gridx = 0; gc.gridy = 1; gc.gridheight = 2; gc.gridwidth = 1;
 		c.add(r, gc);
-		gc.gridx = 1; gc.gridy = 0; gc.gridheight = 1;
+		gc.gridx = 1; gc.gridy = 1; gc.gridheight = 1;
 		c.add(customersPanel, gc);
-		gc.gridx = 1; gc.gridy = 1;
+		gc.gridx = 1; gc.gridy = 2;
 		c.add(ingredientsPanel, gc);
-		gc.gridx = 2; gc.gridy = 0; gc.gridheight = 2;
+		gc.gridx = 2; gc.gridy = 1; gc.gridheight = 2;
 		c.add(bartendingPanel, gc);
 		System.out.println("Added Panels");
 		

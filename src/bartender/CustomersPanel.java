@@ -15,10 +15,12 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class CustomersPanel extends JPanel{
 	
@@ -36,12 +38,16 @@ public class CustomersPanel extends JPanel{
 		
 		setPreferredSize(new Dimension(600, 150));
 		//setSize(600, 150);
-		setBackground(Color.RED);
+		//setBackground(Color.decode("#1a0033"));
+		setBackground(Color.BLACK);
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
 		gc.gridwidth = 1;
 		gc.gridheight = 1;
 		System.out.println("CustomersPanel initialization");
+		
+		Border border = BorderFactory.createLineBorder(Color.WHITE);
+		setBorder(border);
 		
 		happy = new ImageIcon("Hap.png");
 		neutral = new ImageIcon("Neut.png");

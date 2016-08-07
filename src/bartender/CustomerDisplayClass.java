@@ -1,5 +1,6 @@
 package bartender;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
@@ -21,6 +22,7 @@ public class CustomerDisplayClass extends JLabel{
 		order = drinkWanted;
 		customerIcon = new JLabel(happy);
 		customerLabel = new JLabel(drinkWanted);
+		customerLabel.setForeground(Color.WHITE);
 		customerLabel.setPreferredSize(new Dimension(95, 20));
 		customerLabel.setMinimumSize(new Dimension(95, 20));
 		customerLabel.setHorizontalAlignment(SwingConstants.CENTER);

@@ -20,7 +20,7 @@ public class IngredientsPanel extends JPanel{
 	public IngredientsPanel(){
 		//Initialize JPanel
 		setPreferredSize(new Dimension(600, 150));
-		setBackground(Color.GREEN);
+		setBackground(Color.BLACK);
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
 		gc.gridwidth = 1;
@@ -28,20 +28,21 @@ public class IngredientsPanel extends JPanel{
 		System.out.println("IngredientsPanel initialization");
 		
 		//Create Border
-		border = BorderFactory.createLineBorder(Color.black);
+		border = BorderFactory.createLineBorder(Color.WHITE);
+		setBorder(border);
 		
 		//Initialize Labels
-		qq = new JLabel(" Q-Gin "); qq.setBorder(border);
-		ww = new JLabel(" W-Vodka "); ww.setBorder(border);
-		ee = new JLabel(" E-Whiskey "); ee.setBorder(border);
-		rr = new JLabel(" R-Vermouth "); rr.setBorder(border);
-		tt = new JLabel(" T-Tequila "); tt.setBorder(border);
-		yy = new JLabel(" Y-Beer "); yy.setBorder(border);
-		uu = new JLabel(" U-Rum "); uu.setBorder(border);
-		aa = new JLabel(" A-Sugar "); aa.setBorder(border);
-		ss = new JLabel(" S-Lime "); ss.setBorder(border);
-		dd = new JLabel(" D-Tonic Water "); dd.setBorder(border);
-		ff = new JLabel(" F-Juice "); ff.setBorder(border);
+		qq = new JLabel(" Q-Gin "); qq.setBorder(border); qq.setForeground(Color.WHITE);
+		ww = new JLabel(" W-Vodka "); ww.setBorder(border); ww.setForeground(Color.WHITE);
+		ee = new JLabel(" E-Whiskey "); ee.setBorder(border); ee.setForeground(Color.WHITE);
+		rr = new JLabel(" R-Vermouth "); rr.setBorder(border); rr.setForeground(Color.WHITE);
+		tt = new JLabel(" T-Tequila "); tt.setBorder(border); tt.setForeground(Color.WHITE);
+		yy = new JLabel(" Y-Beer "); yy.setBorder(border); yy.setForeground(Color.WHITE);
+		uu = new JLabel(" U-Rum "); uu.setBorder(border); uu.setForeground(Color.WHITE);
+		aa = new JLabel(" A-Sugar "); aa.setBorder(border); aa.setForeground(Color.WHITE);
+		ss = new JLabel(" S-Lime "); ss.setBorder(border); ss.setForeground(Color.WHITE);
+		dd = new JLabel(" D-Tonic Water "); dd.setBorder(border); dd.setForeground(Color.WHITE);
+		ff = new JLabel(" F-Juice "); ff.setBorder(border); ff.setForeground(Color.WHITE);
 		
 		gc.insets = new Insets(10, 5, 10, 5);
 		//Add Labels

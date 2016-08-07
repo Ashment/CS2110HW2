@@ -6,9 +6,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class BartendingPanel extends JPanel{
 	GridBagConstraints gc;
@@ -19,12 +21,17 @@ public class BartendingPanel extends JPanel{
 	
 	public BartendingPanel(ImageIcon mixer, ImageIcon drink){
 		setPreferredSize(new Dimension(105, 300));
-		setBackground(Color.GRAY);
+		setBackground(Color.BLACK);
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
 		
+		//Create Border
+		Border border = BorderFactory.createLineBorder(Color.WHITE);
+		setBorder(border);
+		
 		drinkLabel = new JLabel(drink);
 		drinkName = new JLabel("  ");
+		drinkName.setForeground(Color.WHITE);
 		mixerLabel = new JLabel(mixer);
 		
 		gc.insets = new Insets(20, 0, 15, 0);

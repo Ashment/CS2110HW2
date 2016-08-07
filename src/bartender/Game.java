@@ -26,6 +26,7 @@ public class Game extends JFrame implements Runnable{
 	BartendingPanel bartendingPanel;
 	Container c;
 	GridBagConstraints gc;
+	SoundEffect sfx;
 	
 	String currentIngredients;
 	ImageIcon[] mixerIcons;
@@ -47,14 +48,17 @@ public class Game extends JFrame implements Runnable{
 		ingredientsPanel = new IngredientsPanel();
 		FindMixerIcons();
 		bartendingPanel = new BartendingPanel(mixerIcons[0], DrinksAndIngredients.badDrink.icon);
+		RecipePanel r = new RecipePanel();
 		
 		c = getContentPane();
 		
-		gc.gridx = 0; gc.gridy = 0;
+		gc.gridx = 0; gc.gridy = 0; gc.gridheight = 2;
+		c.add(r, gc);
+		gc.gridx = 1; gc.gridy = 0; gc.gridheight = 1;
 		c.add(customersPanel, gc);
-		gc.gridx = 0; gc.gridy = 1;
+		gc.gridx = 1; gc.gridy = 1;
 		c.add(ingredientsPanel, gc);
-		gc.gridx = 1; gc.gridy = 0; gc.gridheight = 2;
+		gc.gridx = 2; gc.gridy = 0; gc.gridheight = 2;
 		c.add(bartendingPanel, gc);
 		System.out.println("Added Panels");
 		
@@ -62,6 +66,7 @@ public class Game extends JFrame implements Runnable{
 		currentIngredients = "";
 		
 		StartMusic();
+		sfx = new SoundEffect("IngredientAdded.wav");
 	}
 	
 	public void InitiateCustomerLists(){
@@ -82,12 +87,16 @@ public class Game extends JFrame implements Runnable{
 			System.out.println("Inputted Ingredient: " + str);
 			if(currentIngredients.length() < 4){
 				currentIngredients += str;
+				sfx.SetSound("IngredientAdded.wav");
+				sfx.Play();
 				System.out.println("Current Ingredients: " + currentIngredients);
 				UpdateMixerUI();
 			}
 		}else if(key == 8){
 			//backspace
 			KillDrink(true);
+			sfx.SetSound("DrinkReset.wav");
+			sfx.Play();
 		}else if(key == 32){
 			//space bar
 			if(currentIngredients != ""){
@@ -114,6 +123,13 @@ public class Game extends JFrame implements Runnable{
 	public void CreateDrink(){
 		currentDrink = DrinksAndIngredients.FindDrink(currentIngredients);
 		bartendingPanel.UpdateDrink(currentDrink);
+		if(currentDrink != DrinksAndIngredients.badDrink){
+			sfx.SetSound("DrinkMade.wav");
+			sfx.Play();
+		}else{
+			sfx.SetSound("DrinkReset.wav");
+			sfx.Play();
+		}
 		ResetDrink();
 	}
 	
@@ -161,7 +177,7 @@ public class Game extends JFrame implements Runnable{
 		// TODO Auto-generated method stub
 		for(;;){
 			try {
-				Thread.sleep(128000);
+				Thread.sleep(127000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

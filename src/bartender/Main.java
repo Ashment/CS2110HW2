@@ -24,6 +24,7 @@ public class Main{
 	    javax.swing.SwingUtilities.invokeLater(new Runnable(){
 	        public void run(){
 	          game = new Game("BARTENDING LAIFU", thisMain, "Game Thread");
+	          game.start();
 	        }
 	    });
 	    

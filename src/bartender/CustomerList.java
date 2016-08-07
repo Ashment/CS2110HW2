@@ -12,6 +12,8 @@ public class CustomerList implements Runnable{
 	public static Drink[] drinks = DrinksAndIngredients.drinks;
 	public boolean busy;
 	
+	int customerWait;
+	
 	public CustomerList(CustomerDisplayClass cDisplay, String tName, Game gg){
 		threadName = tName;
 		display = cDisplay;
@@ -24,9 +26,10 @@ public class CustomerList implements Runnable{
 			Drink randomDrink = drinks[NumberRandom(0, drinks.length)];
 			customers[i] = new Customer(randomDrink);
 		}
-		currentCustomer = customers[0];
-		display.SetString(currentCustomer.wantedDrink.name);
-		display.SetIcon(1);
+		currentCustomer = null;
+		customerWait = NumberRandom(3, 13);
+		display.SetString(" ");
+		display.SetIcon(0);
 	}
 
 	@Override
@@ -45,16 +48,30 @@ public class CustomerList implements Runnable{
 	
 	public void tick(){
 		//per tick
-		currentCustomer.cPatience--;
-		System.out.println("TICK at: " + threadName + ". Current Paticne = " + currentCustomer.cPatience);
-		if(currentCustomer.cPatience <= 0){
-			RemoveAt(0);
-			display.SetString(currentCustomer.wantedDrink.name);
-			display.SetIcon(1);
-		}else if(currentCustomer.cPatience <= 6){
-			display.SetIcon(3);
-		}else if(currentCustomer.cPatience <= Math.floor((currentCustomer.patience / 2))){
-			display.SetIcon(2);
+		if(currentCustomer != null){
+			currentCustomer.cPatience--;
+			System.out.println("TICK at: " + threadName + ". Current Paticne = " + currentCustomer.cPatience);
+			if(currentCustomer.cPatience <= 0){
+				RemoveAt(0);
+				g.sfx.SetSound("CustomerLeft.wav");
+				g.sfx.Play();
+				display.SetString(currentCustomer.wantedDrink.name);
+				display.SetIcon(1);
+			}else if(currentCustomer.cPatience <= 6){
+				display.SetIcon(3);
+			}else if(currentCustomer.cPatience <= Math.floor((currentCustomer.patience / 2))){
+				display.SetIcon(2);
+			}
+		}else{
+			if(customerWait > 0){
+				customerWait--;
+			}else{
+				if(customers.length > 0){
+					currentCustomer = customers[0];
+					display.SetString(currentCustomer.wantedDrink.name);
+					display.SetIcon(1);
+				}
+			}
 		}
 	}
 	
@@ -73,10 +90,14 @@ public class CustomerList implements Runnable{
 	public void ServeDrink(Drink d){
 		if(d == currentCustomer.wantedDrink){
 			g.KillDrink(false);
+			g.sfx.SetSound("DrinkServed.wav");
+			g.sfx.Play();
 			//COMPLETED REQUEST
 			RemoveAt(0);
-			display.SetString(currentCustomer.wantedDrink.name);
-			display.SetIcon(1);
+			customerWait = NumberRandom(6, 19);
+			currentCustomer = null;
+			display.SetString(" ");
+			display.SetIcon(0);
 		}
 	}
 	
@@ -91,6 +112,6 @@ public class CustomerList implements Runnable{
 		}
 		customers = newTempArr;
 		
-		currentCustomer = customers[0];
+		//currentCustomer = customers[0];
 	}
 }

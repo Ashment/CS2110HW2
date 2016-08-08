@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 public class RecipePanel extends JPanel{
+	//Recipe navigation GUI
 	JLabel recipeBook;
 	
 	public RecipePanel(){

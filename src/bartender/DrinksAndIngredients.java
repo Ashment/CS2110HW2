@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.Hashtable;
 
 public class DrinksAndIngredients {
+	//Hashtable for assigning chars to ingredients
 	public static Hashtable<String, String> ingredients = new Hashtable<String, String>();
 	public static Drink[] drinks;
 	public static Drink badDrink;
@@ -64,6 +65,7 @@ public class DrinksAndIngredients {
 	}
 	
 	public static String SortKeys(String keys){
+		//Sorts key input
 		Character[] chars = new Character[keys.length()];
 		
 		for(int i=0; i<chars.length; i++){
@@ -94,6 +96,7 @@ public class DrinksAndIngredients {
 	}
 	
 	public static Drink FindDrink(String keys){
+		//Find drink based on ingredients received
 		Drink created = badDrink;
 		String sKeys = SortKeys(keys);
 		System.out.println("Creating from: " + sKeys);

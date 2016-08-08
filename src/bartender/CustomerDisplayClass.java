@@ -18,6 +18,7 @@ public class CustomerDisplayClass extends JLabel{
 	JLabel customerIcon, customerLabel, customerRequest;
 	
 	public CustomerDisplayClass(String drinkWanted, ImageIcon hap, ImageIcon neut, ImageIcon sd, ImageIcon emp){
+		//Set images based on customer state and displays drink wanted
 		happy = hap; neutral = neut; sad = sd; empty = emp;
 		order = drinkWanted;
 		customerIcon = new JLabel(happy);

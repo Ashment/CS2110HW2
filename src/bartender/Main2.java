@@ -5,6 +5,7 @@ import java.io.File;
 import javax.swing.*;
 
 public class Main2 {
+	//Test Class. No function here.
 
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("Name");

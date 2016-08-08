@@ -9,6 +9,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 
 public class SoundEffect{
+	//Manages sounds
 
 	String fileLocation;
 	

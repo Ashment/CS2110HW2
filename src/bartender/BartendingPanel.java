@@ -20,6 +20,7 @@ public class BartendingPanel extends JPanel{
 	JLabel drinkLabel, drinkName, mixerLabel;
 	
 	public BartendingPanel(ImageIcon mixer, ImageIcon drink){
+		//Initialize GUI
 		setPreferredSize(new Dimension(105, 300));
 		setBackground(Color.BLACK);
 		setLayout(new GridBagLayout());
@@ -29,6 +30,7 @@ public class BartendingPanel extends JPanel{
 		Border border = BorderFactory.createLineBorder(Color.WHITE);
 		setBorder(border);
 		
+		//Label for Drink
 		drinkLabel = new JLabel(drink);
 		drinkName = new JLabel("  ");
 		drinkName.setForeground(Color.WHITE);
@@ -48,8 +50,9 @@ public class BartendingPanel extends JPanel{
 	public void SetMixerIcon(ImageIcon i){
 		mixerLabel.setIcon(i);
 	}
-	
+
 	public void UpdateDrink(Drink d){
+		//Updates GUI to match game state
 		if(d != null){
 			drinkLabel.setIcon(d.icon);
 			drinkName.setText(d.name);

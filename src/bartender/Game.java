@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class Game extends JFrame implements Runnable{
+	//Main game state manager
 	
 	Thread thread;
 	String threadName;
@@ -87,10 +88,12 @@ public class Game extends JFrame implements Runnable{
 	}
 	
 	public void keyPressed(KeyEvent e){
+		//Key get
 		int key = e.getKeyCode();
 	}
 	
 	public void keyReleased(KeyEvent e){
+		//Behavior for player input
 		int key = e.getKeyCode();
 		System.out.println(key);
 		char c = (char)e.getKeyCode();
@@ -187,7 +190,7 @@ public class Game extends JFrame implements Runnable{
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		//Run Thread
 		for(;;){
 			try {
 				Thread.sleep(127000);

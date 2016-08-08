@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Main{
+	//Handles INPUT and initializes main game state manager, which runs the game.
 	
 	static Main thisMain;
 	Game game;

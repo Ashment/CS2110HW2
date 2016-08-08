@@ -1,6 +1,7 @@
 package bartender;
 
 public class Customer {
+	//Customer Class for Customer Queue
 	public Drink wantedDrink;
 	
 	public int patience;

@@ -2,6 +2,7 @@ package bartender;
 
 
 public class CustomerList implements Runnable{
+	//Thread for customer list management
 	Thread thread;
 	String threadName;
 	CustomerDisplayClass display;
@@ -15,6 +16,7 @@ public class CustomerList implements Runnable{
 	int customerWait;
 	
 	public CustomerList(CustomerDisplayClass cDisplay, String tName, Game gg){
+		//Initializes and fills with customers
 		threadName = tName;
 		display = cDisplay;
 		g = gg;
@@ -22,6 +24,7 @@ public class CustomerList implements Runnable{
 		
 		int customerLine = NumberRandom(6, 15);
 		customers = new Customer[customerLine];
+		//Assigns drink wanted to each customer
 		for(int i=0; i<customerLine; i++){
 			Drink randomDrink = drinks[NumberRandom(0, drinks.length)];
 			customers[i] = new Customer(randomDrink);
@@ -34,7 +37,7 @@ public class CustomerList implements Runnable{
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		//Timekeeping
 		for(;;){
 			//Customer List Loop
 			try {
@@ -47,7 +50,7 @@ public class CustomerList implements Runnable{
 	}
 	
 	public void tick(){
-		//per tick
+		//per tick / game update loop
 		if(currentCustomer != null){
 			currentCustomer.cPatience--;
 			System.out.println("TICK at: " + threadName + ". Current Paticne = " + currentCustomer.cPatience);
@@ -57,7 +60,7 @@ public class CustomerList implements Runnable{
 				g.sfx.Play();
 				display.SetString(currentCustomer.wantedDrink.name);
 				display.SetIcon(1);
-			}else if(currentCustomer.cPatience <= 6){
+			}else if(currentCustomer.cPatience <= 8){
 				display.SetIcon(3);
 			}else if(currentCustomer.cPatience <= Math.floor((currentCustomer.patience / 2))){
 				display.SetIcon(2);

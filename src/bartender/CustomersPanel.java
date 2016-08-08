@@ -34,8 +34,10 @@ public class CustomersPanel extends JPanel{
 	Game g;
 	
 	public CustomersPanel(Game gg){
+		//Set reference to master class
 		g = gg;
 		
+		//Initialize GUI
 		setPreferredSize(new Dimension(600, 150));
 		//setSize(600, 150);
 		//setBackground(Color.decode("#1a0033"));
@@ -49,11 +51,13 @@ public class CustomersPanel extends JPanel{
 		Border border = BorderFactory.createLineBorder(Color.WHITE);
 		setBorder(border);
 		
+		//Set Icons for customer status
 		happy = new ImageIcon("Hap.png");
 		neutral = new ImageIcon("Neut.png");
 		sad = new ImageIcon("Sad.png");
 		empty = new ImageIcon("Emp.png");
 		
+		//Create's customer displays for GUI
 		c1 = new CustomerDisplayClass("Customer1", happy, neutral, sad, empty);
 		c2 = new CustomerDisplayClass("Customer2", happy, neutral, sad, empty);
 		c3 = new CustomerDisplayClass("Customer3", happy, neutral, sad, empty);
